@@ -246,9 +246,9 @@ impl ProtectionModule for FileProtectionModule {
             self.enabled = true;
             log::info!("✅ File Protection ENABLED by policy");
             
-            match self.start_http_server("127.0.0.1:8081").await {
+            match self.start_http_server("0.0.0.0:8081").await {
               Ok(()) => {
-                    log::info!("✅ File Protection HTTP server started successfully on 127.0.0.1:8081");
+                    log::info!("✅ File Protection HTTP server started successfully on 0.0.0.0:8081");
                 }
                 Err(e) => {
                     log::error!("❌ Failed to start file protection HTTP server: {}", e);

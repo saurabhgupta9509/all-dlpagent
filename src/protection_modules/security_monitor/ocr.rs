@@ -128,6 +128,11 @@ pub struct OcrProcessor {
 
 impl OcrProcessor {
     pub fn new() -> Result<Self, Box<dyn std::error::Error + Send + Sync + 'static>> {
+        // Ensure Tesseract knows where to look for tessdata
+        if std::env::var("TESSDATA_PREFIX").is_err() {
+            std::env::set_var("TESSDATA_PREFIX", ".");
+        }
+
         // let mut tess = LepTess::new(None, "eng")?;
         let mut tess = LepTess::new(None, "eng")
             .map_err(|e| Box::new(e) as Box<dyn std::error::Error + Send + Sync>)?;
