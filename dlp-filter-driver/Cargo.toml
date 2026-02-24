@@ -1,0 +1,22 @@
+[package]
+name = "dlp-filter-driver"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"] # This tells Rust to build a C-style library (.sys)
+
+[dependencies]
+# The core library for building a Windows Filesystem Filter Driver
+# We use the 'fsfilter' crate from crates.io, which is the simplest way
+
+# Required by fsfilter for kernel types
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Kernel",
+    "Win32_System_Threading",
+    "Win32_Storage_FileSystem",
+] }
+uuid = { version = "1", features = ["v4"] }
+log = "0.4"

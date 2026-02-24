@@ -1,0 +1,698 @@
+cargo :    Compiling 
+proc-macro2 v1.0.103
+At line:1 char:91
++ ... ding]::UTF8; $e
+nv:RUSTFLAGS="--color
+ never"; cargo check 
+2>&1 | Out-F ...
++                    
+                     
+         
+~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (   Comp   
+ iling proc-macro    
+2 v1.0.103:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+   Compiling quote 
+v1.0.41
+   Compiling 
+unicode-ident v1.0.22
+    Checking cfg-if 
+v1.0.4
+    Checking 
+windows-link v0.2.1
+   Compiling 
+windows_x86_64_msvc 
+v0.52.6
+    Checking 
+smallvec v1.15.1
+    Checking memchr 
+v2.7.6
+    Checking bytes 
+v1.10.1
+    Checking log 
+v0.4.28
+   Compiling autocfg 
+v1.5.0
+    Checking itoa 
+v1.0.15
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile 
+`proc-macro2` (build 
+script)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+build_script_build 
+--edition=2021 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\proc-macro2-1.0
+.103\build.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type bin 
+--emit=dep-info,link 
+-C embed-bitcode=no 
+--cfg "feature=\"defa
+ult\"" --cfg "feature
+=\"proc-macro\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"default\", 
+\"nightly\", 
+\"proc-macro\", \"spa
+n-locations\"))" -C m
+etadata=2ff08f7033ea4
+3fe -C extra-filename
+=-abf11a157207e42f 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\build\proc-macro2-
+abf11a157207e42f -L d
+ependency=D:\all\dlp-
+agent-main\target\deb
+ug\deps --cap-lints 
+allow --color never` 
+(exit code: 1)
+warning: build 
+failed, waiting for 
+other jobs to 
+finish...
+error: could not 
+compile `cfg-if` 
+(lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name cfg_if 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\cfg-if-1.0.4\sr
+c\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"core\", \"ru
+stc-dep-of-std\"))" 
+-C metadata=57f2ec9ac
+a2ac35f -C extra-file
+name=-89ed7097f74977b
+b --out-dir D:\all\dl
+p-agent-main\target\d
+ebug\deps -L dependen
+cy=D:\all\dlp-agent-m
+ain\target\debug\deps
+ --cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile 
+`unicode-ident` (lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+unicode_ident 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\unicode-ident-1
+.0.22\src\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata,
+link -C 
+embed-bitcode=no 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values())" -C metadat
+a=581a7724947dcd5e 
+-C extra-filename=-de
+2637b184dba2a9 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile `smallvec` 
+(lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+smallvec 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\smallvec-1.15.1
+\src\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 --cfg 
+"feature=\"const_gene
+rics\"" --cfg "featur
+e=\"const_new\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, values(
+\"arbitrary\", 
+\"bincode\", 
+\"const_generics\", 
+\"const_new\", \"debu
+gger_visualizer\", 
+\"drain_filter\", 
+\"drain_keep_rest\", 
+\"impl_bincode\", 
+\"malloc_size_of\", 
+\"may_dangle\", 
+\"serde\", 
+\"specialization\", 
+\"union\", \"unty\", 
+\"write\"))" -C metad
+ata=6b486232a35e2ea0 
+-C extra-filename=-77
+623f71e993c971 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile 
+`windows-link` (lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+windows_link 
+--edition=2021 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\windows-link-0.
+2.1\src\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 --warn
+=unexpected_cfgs --wa
+rn=missing_unsafe_on_
+extern --check-cfg "c
+fg(windows_raw_dylib,
+ windows_slim_errors)
+" --check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values())" -C metadat
+a=17bf9a70f0eb1395 
+-C extra-filename=-ff
+9f06e96ddd38b2 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile `windows_x86_
+64_msvc` (build 
+script)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+build_script_build 
+--edition=2021 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\windows_x86_64_
+msvc-0.52.6\build.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type bin 
+--emit=dep-info,link 
+-C embed-bitcode=no 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values())" -C metadat
+a=5219e0bf3840668c 
+-C extra-filename=-94
+62cd2f71668051 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\build\windows_x86_
+64_msvc-9462cd2f71668
+051 -L dependency=D:\
+all\dlp-agent-main\ta
+rget\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: could not 
+compile `memchr` 
+(lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name memchr 
+--edition=2021 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\memchr-2.7.6\sr
+c\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 --cfg 
+"feature=\"alloc\"" 
+--cfg "feature=\"defa
+ult\"" --cfg 
+"feature=\"std\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"alloc\", 
+\"core\", 
+\"default\", 
+\"libc\", 
+\"logging\", \"rustc-
+dep-of-std\", 
+\"std\", 
+\"use_std\"))" -C met
+adata=92993802f35df25
+9 -C extra-filename=-
+b1fa68d53be13be3 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+error: could not 
+compile `bytes` (lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name bytes 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\bytes-1.10.1\sr
+c\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 --warn
+=unexpected_cfgs 
+--check-cfg 
+cfg(loom) --cfg "feat
+ure=\"default\"" 
+--cfg 
+"feature=\"std\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"default\", 
+\"extra-platforms\", 
+\"serde\", 
+\"std\"))" -C metadat
+a=0d1451e9eb94e56c 
+-C extra-filename=-78
+9b31ccf48939a0 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+
+error: could not 
+compile `quote` 
+(build script)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name 
+build_script_build 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\quote-1.0.41\bu
+ild.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type bin 
+--emit=dep-info,link 
+-C embed-bitcode=no 
+--cfg "feature=\"defa
+ult\"" --cfg "feature
+=\"proc-macro\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"default\", 
+\"proc-macro\"))" -C 
+metadata=39f1d12a7164
+1fa5 -C extra-filenam
+e=-4b1ef075aa63e3a9 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\build\quote-4b1ef0
+75aa63e3a9 -L depende
+ncy=D:\all\dlp-agent-
+main\target\debug\dep
+s --cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile `log` (lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name log 
+--edition=2021 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\log-0.4.28\src\
+lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 --cfg 
+"feature=\"std\"" 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values(\"kv\", 
+\"kv_serde\", 
+\"kv_std\", 
+\"kv_sval\", 
+\"kv_unstable\", \"kv
+_unstable_serde\", 
+\"kv_unstable_std\", 
+\"kv_unstable_sval\",
+ 
+\"max_level_debug\", 
+\"max_level_error\", 
+\"max_level_info\", 
+\"max_level_off\", 
+\"max_level_trace\", 
+\"max_level_warn\", \
+"release_max_level_de
+bug\", \"release_max_
+level_error\", \"rele
+ase_max_level_info\",
+ \"release_max_level_
+off\", \"release_max_
+level_trace\", \"rele
+ase_max_level_warn\",
+ \"serde\", \"std\", 
+\"sval\", 
+\"sval_ref\", 
+\"value-bag\"))" -C m
+etadata=e5bc3116e228e
+be0 -C extra-filename
+=-7e523cf9879a72e0 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: could not 
+compile `autocfg` 
+(lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name autocfg 
+--edition=2015 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\autocfg-1.5.0\s
+rc\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata,
+link -C 
+embed-bitcode=no 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, 
+values())" -C metadat
+a=f77078481d311374 
+-C extra-filename=-55
+58fb8bb785b1df 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)
+error: cannot 
+specify the 
+`--color` option 
+with `--json`
+
+error: could not 
+compile `itoa` (lib)
+
+Caused by:
+  process didn't 
+exit successfully: `C
+:\Users\saurabhgupta\
+.rustup\toolchains\st
+able-x86_64-pc-window
+s-msvc\bin\rustc.exe 
+--crate-name itoa 
+--edition=2018 C:\Use
+rs\saurabhgupta\.carg
+o\registry\src\index.
+crates.io-1949cf8c6b5
+b557f\itoa-1.0.15\src
+\lib.rs 
+--error-format=json -
+-json=diagnostic-rend
+ered-ansi,artifacts,f
+uture-incompat 
+--crate-type lib --em
+it=dep-info,metadata 
+-C embed-bitcode=no 
+-C debuginfo=2 
+--check-cfg 
+cfg(docsrs,test) 
+--check-cfg 
+"cfg(feature, values(
+\"no-panic\"))" -C me
+tadata=89a041238714a7
+09 -C extra-filename=
+-64d483359064daa9 
+--out-dir D:\all\dlp-
+agent-main\target\deb
+ug\deps -L dependency
+=D:\all\dlp-agent-mai
+n\target\debug\deps 
+--cap-lints allow 
+--color never` (exit 
+code: 1)

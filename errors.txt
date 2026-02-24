@@ -1,0 +1,3552 @@
+cargo :     Checking 
+dlp-agent v1.0.0 (D:\
+all\dlp-agent-main)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -Encoding 
+ascii errors.txt
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (    Che   
+ cking dl...dlp-a    
+gent-main):Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+warning: unused 
+import: `DateTime`
+  --> src\agent_core.
+rs:19:19
+   |
+19 | use 
+chrono::{Utc, 
+DateTime};
+   |                 
+  ^^^^^^^^
+   |
+   = note: `#[warn(un
+used_imports)]` 
+(part of 
+`#[warn(unused)]`) 
+on by default
+
+warning: unnecessary 
+parentheses around 
+assigned value
+  --> 
+src\gui.rs:77:52
+   |
+77 | ...             
+      let 
+is_vmware_ip = 
+(octets[0] == 192 && 
+octets[1] == 168 && 
+   |                 
+                     
+    ^
+78 | ...             
+                     
+    (octets[2] == 23 
+|| octets[2] == 19));
+   |                 
+                     
+                     
+                   ^
+   |
+   = note: `#[warn(un
+used_parens)]` (part 
+of 
+`#[warn(unused)]`) 
+on by default
+help: remove these 
+parentheses
+   |
+77 ~                 
+                let 
+is_vmware_ip = 
+octets[0] == 192 && 
+octets[1] == 168 && 
+78 ~                 
+                     
+              
+(octets[2] == 23 || 
+octets[2] == 19);
+   |
+
+warning: unused 
+import: `core::fmt`
+ --> src\protection_m
+odules\dto.rs:1:5
+  |
+1 | use core::fmt;
+  |     ^^^^^^^^^
+
+warning: unused 
+import: 
+`tokio::sync::RwLock`
+ --> src\protection_m
+odules\file_protectio
+n\mod.rs:7:5
+  |
+7 | use 
+tokio::sync::RwLock;
+  |     
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `crate::prote
+ction_modules::file_p
+rotection::kernel::Ke
+rnelEventBridge`
+  --> src\protection_
+modules\file_protecti
+on\mod.rs:14:5
+   |
+14 | use crate::prote
+ction_modules::file_p
+rotection::kernel::Ke
+rnelEventBridge;
+   |     ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `HashSet`
+ --> src\protection_m
+odules\file_protectio
+n\fs_index.rs:2:33
+  |
+2 | use std::collecti
+ons::{HashMap, 
+HashSet};
+  |                  
+               
+^^^^^^^
+
+warning: unused 
+import: `Path`
+ --> src\protection_m
+odules\file_protectio
+n\filesystem_scanner.
+rs:5:17
+  |
+5 | use 
+std::path::{Path, 
+PathBuf};
+  |                 
+^^^^
+
+warning: unused 
+import: `super::path_
+normalizer::PathNorma
+lizer`
+  --> src\protection_
+modules\file_protecti
+on\filesystem_scanner
+.rs:11:5
+   |
+11 | use super::path_
+normalizer::PathNorma
+lizer;
+   |     ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+
+warning: unused 
+import: `super::proto
+col::AdminRequest`
+ --> src\protection_m
+odules\file_protectio
+n\comms\transport.rs:
+6:5
+  |
+6 | use super::protoc
+ol::AdminRequest;
+  |     ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: 
+`DriveInfo`, 
+`ErrorCode`, 
+`NodeInfo`, and 
+`StatsInfo`
+ --> src\protection_m
+odules\file_protectio
+n\comms\mod.rs:9:49
+  |
+9 | pub use protocol:
+:{AdminRequest, 
+AgentResponse, 
+ErrorCode, 
+DriveInfo, NodeInfo, 
+StatsInfo};
+  |                  
+                     
+          ^^^^^^^^^  
+^^^^^^^^^  ^^^^^^^^  
+^^^^^^^^^
+
+warning: unused 
+import: 
+`TransportServer`
+  --> src\protection_
+modules\file_protecti
+on\comms\mod.rs:11:21
+   |
+11 | pub use transpor
+t::{TransportServer, 
+TransportConfig};
+   |                 
+    ^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: 
+`ExplorerStats` and 
+`NodeUIState`
+ --> src\protection_m
+odules\file_protectio
+n\ui\mod.rs:9:41
+  |
+9 | pub use explorer_
+state::{ExplorerState
+, NodeUIState, 
+SelectionInfo, 
+PendingProtection, 
+ExplorerStats};
+  |                  
+                     
+  ^^^^^^^^^^^        
+                     
+       ^^^^^^^^^^^^^
+
+warning: unused 
+import: `interaction_
+rules::InteractionEng
+ine`
+  --> src\protection_
+modules\file_protecti
+on\ui\mod.rs:10:9
+   |
+10 | pub use interact
+ion_rules::Interactio
+nEngine;
+   |         ^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+
+warning: unused 
+import: 
+`KernelOperations`
+ --> src\protection_m
+odules\file_protectio
+n\policy\kernel_adapt
+er.rs:9:42
+  |
+9 | use super::kernel
+_policy::{KernelPolic
+y, KernelOperations};
+  |                  
+                     
+   ^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: 
+`ProtectionAction`, `
+ProtectionOperations`
+, and 
+`ProtectionScope`
+ --> src\protection_m
+odules\file_protectio
+n\policy\policy_engin
+e.rs:7:42
+  |
+7 | use super::policy
+_intent::{PolicyInten
+t, ProtectionScope, 
+ProtectionAction, Pro
+tectionOperations};
+  |                  
+                     
+   ^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `ProtectionOp
+erations`
+ --> src\protection_m
+odules\file_protectio
+n\policy\policy_previ
+ew.rs:5:60
+  |
+5 | use super::policy
+_intent::{PolicyInten
+t, ProtectionAction, 
+ProtectionOperations}
+;
+  |                  
+                     
+                     
+^^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: 
+`KernelPolicy` and 
+`PolicyNormalizer`
+ --> src\protection_m
+odules\file_protectio
+n\policy\policy_dry_r
+un.rs:9:28
+  |
+9 | use super::kernel
+_policy::{KernelPolic
+y, PolicyNormalizer};
+  |                  
+          
+^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: 
+`KernelOperations` 
+and `KernelPolicy`
+  --> src\protection_
+modules\file_protecti
+on\policy\mod.rs:17:2
+5
+   |
+17 | pub use kernel_p
+olicy::{KernelPolicy,
+ PathMatchType, 
+KernelOperations, 
+PolicyNormalizer};
+   |                 
+        ^^^^^^^^^^^^ 
+                
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `FilePolicy`
+  --> src\protection_
+modules\file_protecti
+on\policy\mod.rs:18:4
+1
+   |
+18 | pub use kernel_a
+dapter::{KernelAdapte
+r, FilePolicy};
+   |                 
+                     
+   ^^^^^^^^^^
+
+warning: unused 
+imports: 
+`ActivePolicy` and 
+`PolicyStoreStats`
+  --> src\protection_
+modules\file_protecti
+on\policy\mod.rs:19:3
+7
+   |
+19 | pub use policy_s
+tore::{PolicyStore, 
+ActivePolicy, 
+PolicyStoreStats};
+   |                 
+                    
+^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: 
+`PolicyEngineStats`
+  --> src\protection_
+modules\file_protecti
+on\policy\mod.rs:20:3
+9
+   |
+20 | pub use policy_e
+ngine::{PolicyEngine,
+ PolicyEngineStats};
+   |                 
+                     
+ ^^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: `ApplyPolicy
+Request`, 
+`PolicyOperations`, 
+`SearchQuery`, and 
+`ServerState`
+ --> src\protection_m
+odules\file_protectio
+n\networking\mod.rs:9
+:37
+  |
+9 | pub use agent_ser
+ver::{AgentServer, 
+ServerState, 
+SearchQuery, 
+ApplyPolicyRequest, 
+PolicyOperations};
+  |                  
+                   
+^^^^^^^^^^^  
+^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+imports: `Enforcement
+Decision`, 
+`KernelOperation`, 
+and `MockKernelEventG
+enerator`
+  --> src\protection_
+modules\file_protecti
+on\kernel\mod.rs:10:5
+   |
+10 |     
+KernelOperation, 
+   |     
+^^^^^^^^^^^^^^^
+11 |     
+EnforcementDecision,
+   |     
+^^^^^^^^^^^^^^^^^^^
+12 |     MockKernelEv
+entGenerator
+   |     ^^^^^^^^^^^^
+^^^^^^^^^^^^
+
+warning: unused 
+import: 
+`ViolationUpdate`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1808
+:5
+     |
+1808 |     
+ViolationUpdate,
+     |     
+^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `Ordering`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1822
+:38
+     |
+1822 | use 
+std::sync::atomic::{ 
+AtomicBool, Ordering 
+};
+     |               
+                     
+  ^^^^^^^^
+
+warning: unused 
+imports: 
+`AtomicBool` and 
+`Ordering`
+   --> src\protection
+_modules\security_mon
+itor\mod.rs:727:25
+    |
+727 | use std::sync::
+atomic::{AtomicBool, 
+Ordering};
+    |                
+         ^^^^^^^^^^  
+^^^^^^^^
+
+warning: unused 
+imports: 
+`UpdateData` and 
+`UpdateType`
+   --> src\protection
+_modules\security_mon
+itor\mod.rs:737:74
+    |
+737 | use crate::prot
+ection_modules::secur
+ity_monitor::types::{
+RealtimeUpdate, 
+UpdateData, 
+UpdateType};
+    |                
+                     
+                     
+                
+^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused 
+import: `debug`
+  --> src\protection_
+modules\app_tracker.r
+s:17:11
+   |
+17 | use 
+log::{debug, info};
+   |           ^^^^^
+
+warning: use of 
+deprecated function 
+`whoami::hostname`: 
+use `fallible::hostna
+me()` instead
+   --> 
+src\gui.rs:345:46
+    |
+345 |         
+println!("???????  
+Hostname: {}", 
+whoami::hostname());
+    |                
+                     
+        ^^^^^^^^
+    |
+    = note: `#[warn(d
+eprecated)]` on by 
+default
+
+warning: use of 
+deprecated function 
+`whoami::hostname`: 
+use `fallible::hostna
+me()` instead
+   --> src\protection
+_modules\usb_protecti
+on.rs:630:17
+    |
+630 |         
+whoami::hostname()
+    |                
+ ^^^^^^^^
+
+warning: use of 
+deprecated function 
+`whoami::hostname`: 
+use `fallible::hostna
+me()` instead
+   --> src\protection
+_modules\usb_protecti
+on.rs:753:38
+    |
+753 |             
+"agentHostname": 
+whoami::hostname(),
+    |                
+                     
+ ^^^^^^^^
+
+warning: unused 
+variable: 
+`agent_username`
+   --> src\agent_core
+.rs:501:9
+    |
+501 |         
+agent_username: 
+String
+    |         
+^^^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_agent_username`
+    |
+    = note: `#[warn(u
+nused_variables)]` 
+(part of 
+`#[warn(unused)]`) 
+on by default
+
+warning: unused 
+variable: `agent_id`
+   --> src\communicat
+ion.rs:404:9
+    |
+404 |         
+agent_id: u64,
+    |         
+^^^^^^^^
+    |
+help: if this is 
+intentional, prefix 
+it with an underscore
+    |
+404 |         
+_agent_id: u64,
+    |         +
+help: you might have 
+meant to pattern 
+match on the 
+similarly named 
+constant 
+`MINIMUM_APP_TIME`
+    |
+404 -         
+agent_id: u64,
+404 +         protect
+ion_modules::app_trac
+ker::MINIMUM_APP_TIME
+: u64,
+    |
+
+warning: unused 
+variable: `status`
+   --> src\communicat
+ion.rs:480:17
+    |
+480 |             
+let status = 
+response.status();
+    |                
+ ^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: `_status`
+
+warning: unused 
+variable: `username`
+   --> src\communicat
+ion.rs:510:9
+    |
+510 |         
+username: &str
+    |         
+^^^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: 
+`_username`
+
+warning: unused 
+variable: `agent_id`
+   --> src\communicat
+ion.rs:571:9
+    |
+571 |         
+agent_id: u64,
+    |         
+^^^^^^^^
+    |
+help: if this is 
+intentional, prefix 
+it with an underscore
+    |
+571 |         
+_agent_id: u64,
+    |         +
+help: you might have 
+meant to pattern 
+match on the 
+similarly named 
+constant 
+`MINIMUM_APP_TIME`
+    |
+571 -         
+agent_id: u64,
+571 +         protect
+ion_modules::app_trac
+ker::MINIMUM_APP_TIME
+: u64,
+    |
+
+warning: unused 
+variable: `hostname`
+    --> src\communica
+tion.rs:1139:9
+     |
+1139 |         
+hostname: 
+Option<&str>,
+     |         
+^^^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: 
+`_hostname`
+
+warning: unused 
+variable: 
+`policy_engine`
+   --> src\protection
+_modules\usb_protecti
+on.rs:341:9
+    |
+341 |         
+policy_engine: 
+&PolicyEngine,
+    |         
+^^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_policy_engine`
+
+warning: unused 
+variable: 
+`communicator`
+   --> src\protection
+_modules\usb_protecti
+on.rs:342:9
+    |
+342 |         
+communicator: 
+&ServerCommunicator,
+    |         
+^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_communicator`
+
+warning: unused 
+variable: `agent_id`
+   --> src\protection
+_modules\usb_protecti
+on.rs:343:9
+    |
+343 |         
+agent_id: u64,
+    |         
+^^^^^^^^
+    |
+help: if this is 
+intentional, prefix 
+it with an underscore
+    |
+343 |         
+_agent_id: u64,
+    |         +
+help: you might have 
+meant to pattern 
+match on the 
+similarly named 
+constant 
+`MINIMUM_APP_TIME`
+    |
+343 -         
+agent_id: u64,
+343 +         protect
+ion_modules::app_trac
+ker::MINIMUM_APP_TIME
+: u64,
+    |
+
+warning: unused 
+variable: `token`
+   --> src\protection
+_modules\usb_protecti
+on.rs:344:9
+    |
+344 |         token: 
+&str
+    |         ^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_token`
+
+warning: unused 
+variable: `path`
+   --> src\protection
+_modules\usb_protecti
+on.rs:366:21
+    |
+366 |                
+ let path = 
+Path::new(file_path);
+    |                
+     ^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: `_path`
+
+warning: unused 
+variable: 
+`risk_summary`
+   --> src\protection
+_modules\usb_protecti
+on.rs:748:13
+    |
+748 |         let 
+risk_summary = self.g
+et_risk_summary(file_
+analysis);
+    |             
+^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_risk_summary`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:119:51
+    |
+119 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+              
+^^^^^^^ help: try 
+ignoring the field: 
+`details: _`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:162:51
+    |
+162 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+              
+^^^^^^^ help: try 
+ignoring the field: 
+`details: _`
+
+warning: unused 
+variable: `parent_id`
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:202:49
+    |
+202 |             Age
+ntResponse::SearchLoc
+alResults { 
+parent_id, query, 
+results, 
+total_matches, scope 
+} => {
+    |                
+                     
+            
+^^^^^^^^^ help: try 
+ignoring the field: 
+`parent_id: _`
+
+warning: unused 
+variable: `query`
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:202:60
+    |
+202 |             Age
+ntResponse::SearchLoc
+alResults { 
+parent_id, query, 
+results, 
+total_matches, scope 
+} => {
+    |                
+                     
+                     
+  ^^^^^ help: try 
+ignoring the field: 
+`query: _`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:209:51
+    |
+209 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+              
+^^^^^^^ help: try 
+ignoring the field: 
+`details: _`
+
+warning: unused 
+variable: `details`
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_contro
+ller.rs:47:51
+   |
+47 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+   |                 
+                     
+             ^^^^^^^ 
+help: try ignoring 
+the field: `details: 
+_`
+
+warning: unused 
+variable: `parent_id`
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_contro
+ller.rs:86:39
+   |
+86 |             Agen
+tResponse::Children 
+{ parent_id, 
+parent_name, 
+children, 
+total_children } => {
+   |                 
+                     
+ ^^^^^^^^^ help: try 
+ignoring the field: 
+`parent_id: _`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\ui\explorer_contr
+oller.rs:102:51
+    |
+102 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+              
+^^^^^^^ help: try 
+ignoring the field: 
+`details: _`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\ui\explorer_contr
+oller.rs:135:51
+    |
+135 |             
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+              
+^^^^^^^ help: try 
+ignoring the field: 
+`details: _`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\networking\agent_
+server.rs:487:47
+    |
+487 |         
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+          ^^^^^^^ 
+help: try ignoring 
+the field: `details: 
+_`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\networking\agent_
+server.rs:528:47
+    |
+528 |         
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+          ^^^^^^^ 
+help: try ignoring 
+the field: `details: 
+_`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\networking\agent_
+server.rs:576:47
+    |
+576 |         
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+          ^^^^^^^ 
+help: try ignoring 
+the field: `details: 
+_`
+
+warning: unused 
+variable: `details`
+   --> src\protection
+_modules\file_protect
+ion\networking\agent_
+server.rs:601:47
+    |
+601 |         
+AgentResponse::Error 
+{ code, message, 
+details } => {
+    |                
+                     
+          ^^^^^^^ 
+help: try ignoring 
+the field: `details: 
+_`
+
+warning: variable 
+does not need to be 
+mutable
+   --> src\protection
+_modules\file_protect
+ion\networking\websoc
+ket_server.rs:100:13
+    |
+100 |         let 
+mut handle = 
+tokio::spawn(async 
+move {
+    |             
+----^^^^^^
+    |             |
+    |             
+help: remove this 
+`mut`
+    |
+    = note: `#[warn(u
+nused_mut)]` (part 
+of 
+`#[warn(unused)]`) 
+on by default
+
+warning: variable 
+does not need to be 
+mutable
+   --> src\protection
+_modules\file_protect
+ion\networking\agent_
+server.rs:991:5
+    |
+991 |     mut 
+request: axum::extrac
+t::Request,
+    |     ----^^^^^^^
+    |     |
+    |     help: 
+remove this `mut`
+
+warning: variable 
+does not need to be 
+mutable
+   --> src\protection
+_modules\file_protect
+ion\networking\websoc
+ket_server.rs:224:9
+    |
+224 |     let mut 
+handle = 
+tokio::spawn(async 
+move {
+    |         
+----^^^^^^
+    |         |
+    |         help: 
+remove this `mut`
+
+warning: unused 
+variable: 
+`threat_arrow`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2314
+:17
+     |
+2314 |         let 
+(_, threat_arrow, 
+trend_color) = self.g
+et_threat_trend_info(
+);
+     |               
+  ^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_threat_arrow`
+
+warning: unused 
+variable: 
+`trend_color`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2314
+:31
+     |
+2314 |         let 
+(_, threat_arrow, 
+trend_color) = self.g
+et_threat_trend_info(
+);
+     |               
+                
+^^^^^^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: 
+`_trend_color`
+
+warning: unused 
+variable: `screenshot
+_timestamp`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2367
+:10
+     |
+2367 |          scree
+nshot_timestamp: 
+&DateTime<Utc>,  // 
+For reference (maybe 
+store in DB)
+     |          
+^^^^^^^^^^^^^^^^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_screens
+hot_timestamp`
+
+warning: unused 
+variable: `token`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2838
+:9
+     |
+2838 |         
+token: &str
+     |         ^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_token`
+
+warning: unused 
+variable: `comm_arc`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2844
+:17
+     |
+2844 |             
+let comm_arc = self.c
+ommunicator.clone();
+     |               
+  ^^^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: 
+`_comm_arc`
+
+warning: unused 
+variable: `username`
+    --> src\protectio
+n_modules\security_mo
+nitor\mod.rs:1093:5
+     |
+1093 |     username: 
+&str,
+     |     ^^^^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_username`
+
+warning: unused 
+variable: 
+`threat_arrow`
+    --> src\protectio
+n_modules\security_mo
+nitor\mod.rs:1095:13
+     |
+1095 |     let (_, 
+threat_arrow, 
+trend_color) = monito
+r.get_threat_trend_in
+fo();
+     |             
+^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_threat_arrow`
+
+warning: unused 
+variable: 
+`trend_color`
+    --> src\protectio
+n_modules\security_mo
+nitor\mod.rs:1095:27
+     |
+1095 |     let (_, 
+threat_arrow, 
+trend_color) = monito
+r.get_threat_trend_in
+fo();
+     |               
+            
+^^^^^^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: 
+`_trend_color`
+
+warning: unused 
+variable: `device`
+  --> src\protection_
+modules\usb_protectio
+n.rs:96:9
+   |
+96 |         device: 
+&USBDeviceInfo
+   |         ^^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_device`
+
+warning: unused 
+variable: 
+`drive_letter`
+  --> src\protection_
+modules\file_protecti
+on\nt_path_resolver.r
+s:37:13
+   |
+37 |         let 
+drive_letter = if 
+normalized.len() >= 
+2 && normalized.chars
+().nth(1) == 
+Some(':') {
+   |             
+^^^^^^^^^^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: 
+`_drive_letter`
+
+warning: unused 
+variable: `handle`
+   --> src\protection
+_modules\file_protect
+ion\mod.rs:179:17
+    |
+179 |     if let 
+Some(handle) = self.s
+erver_handle.take() {
+    |                
+ ^^^^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: `_handle`
+
+warning: unused 
+variable: `seen_in_th
+is_screenshot`
+   --> src\protection
+_modules\security_mon
+itor\rule_engine.rs:7
+17:17
+    |
+717 |         let 
+mut seen_in_this_scre
+enshot: 
+HashSet<String>  = 
+HashSet::new();
+    |                
+ ^^^^^^^^^^^^^^^^^^^^
+^^^ help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_seen_in
+_this_screenshot`
+
+warning: variable 
+does not need to be 
+mutable
+   --> src\protection
+_modules\security_mon
+itor\rule_engine.rs:7
+17:13
+    |
+717 |         let 
+mut seen_in_this_scre
+enshot: 
+HashSet<String>  = 
+HashSet::new();
+    |             ---
+-^^^^^^^^^^^^^^^^^^^^
+^^^
+    |             |
+    |             
+help: remove this 
+`mut`
+
+warning: unused 
+variable: `cutoff`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:2247
+:75
+     |
+2247 |     fn apply_t
+ime_decay(&self, 
+violations: 
+&[&ViolationRecord], 
+now: u64, cutoff: 
+u64) -> f32 {
+     |               
+                     
+                     
+                  
+^^^^^^
+     |
+help: if this is 
+intentional, prefix 
+it with an underscore
+     |
+2247 |     fn apply_t
+ime_decay(&self, 
+violations: 
+&[&ViolationRecord], 
+now: u64, _cutoff: 
+u64) -> f32 {
+     |               
+                     
+                     
+                  +
+help: you might have 
+meant to pattern 
+match on the 
+similarly named 
+constant 
+`MINIMUM_APP_TIME`
+     |
+2247 -     fn apply_t
+ime_decay(&self, 
+violations: 
+&[&ViolationRecord], 
+now: u64, cutoff: 
+u64) -> f32 {
+2247 +     fn apply_t
+ime_decay(&self, 
+violations: 
+&[&ViolationRecord], 
+now: u64, protection_
+modules::app_tracker:
+:MINIMUM_APP_TIME: 
+u64) -> f32 {
+     |
+
+warning: unused 
+variable: `agent_id`
+  --> src\protection_
+modules\partial_acces
+s_manager.rs:76:13
+   |
+76 |         let 
+agent_id = 
+self.agent_id;
+   |             
+^^^^^^^^
+   |
+help: if this is 
+intentional, prefix 
+it with an underscore
+   |
+76 |         let 
+_agent_id = 
+self.agent_id;
+   |             +
+help: you might have 
+meant to pattern 
+match on the 
+similarly named 
+constant 
+`MINIMUM_APP_TIME`
+   |
+76 -         let 
+agent_id = 
+self.agent_id;
+76 +         let prot
+ection_modules::app_t
+racker::MINIMUM_APP_T
+IME = self.agent_id;
+   |
+
+warning: type 
+`PerformanceMetrics` 
+is more private than 
+the item `SecurityMon
+itor::performance_met
+rics`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1934
+:5
+     |
+1934 |     pub 
+performance_metrics: 
+PerformanceMetrics,
+     |     ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^ field `S
+ecurityMonitor::perfo
+rmance_metrics` is 
+reachable at 
+visibility `pub`
+     |
+note: but type 
+`PerformanceMetrics` 
+is only usable at 
+visibility 
+`pub(self)`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1828
+:1
+     |
+1828 | struct 
+PerformanceMetrics {
+     | ^^^^^^^^^^^^^^
+^^^^^^^^^^^
+     = note: `#[warn(
+private_interfaces)]`
+ on by default
+
+warning: type 
+`ViolationRecord` is 
+more private than 
+the item `SecurityMon
+itor::violation_histo
+ry_24h`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1949
+:5
+     |
+1949 |     pub violat
+ion_history_24h: Vec<
+(ViolationRecord, 
+u64)>, // 
+(violation, 
+timestamp)
+     |     ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^ field `SecurityMon
+itor::violation_histo
+ry_24h` is reachable 
+at visibility `pub`
+     |
+note: but type 
+`ViolationRecord` is 
+only usable at 
+visibility 
+`pub(self)`
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1877
+:1
+     |
+1877 | struct 
+ViolationRecord {
+     | ^^^^^^^^^^^^^^
+^^^^^^^^
+
+warning: methods `exe
+cute_protections_no_p
+olicy_check`, 
+`poll_cycle`, `should
+_refresh_token`, `exe
+cute_protections_old`
+, and `execute_protec
+tions` are never used
+   --> src\agent_core
+.rs:159:14
+    |
+ 44 | impl AgentCore 
+{
+    | -------------- 
+methods in this 
+implementation
+...
+159 |     async fn ex
+ecute_protections_no_
+policy_check(&mut 
+self) -> Result<(), 
+Box<dyn Error + Send 
++ Sync>> {
+    |              ^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+...
+186 |     async fn 
+poll_cycle(&mut 
+self) -> Result<(), 
+Box<dyn Error + Send 
++ Sync>> {
+    |              
+^^^^^^^^^^
+...
+206 |        fn shoul
+d_refresh_token(&self
+) -> bool {
+    |           
+^^^^^^^^^^^^^^^^^^^^
+...
+242 |      async fn e
+xecute_protections_ol
+d(&mut self) -> 
+Result<(), Box<dyn 
+Error + Send + 
+Sync>> {
+    |               ^
+^^^^^^^^^^^^^^^^^^^^^
+^
+...
+412 |     async fn ex
+ecute_protections(&mu
+t self) -> 
+Result<(), Box<dyn 
+Error + Send + 
+Sync>> {
+    |              
+^^^^^^^^^^^^^^^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` 
+(part of 
+`#[warn(unused)]`) 
+on by default
+
+warning: struct `Cert
+ificateWithViolations
+Request` is never 
+constructed
+   --> src\communicat
+ion.rs:249:8
+    |
+249 | struct Certific
+ateWithViolationsRequ
+est<'a> {
+    |        ^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^
+
+warning: methods 
+`get_windows_ip`, `te
+st_usb_protection`, 
+and 
+`send_test_alert` 
+are never used
+   --> 
+src\gui.rs:102:8
+    |
+ 19 | impl AgentGUI {
+    | ------------- 
+methods in this 
+implementation
+...
+102 |     fn get_wind
+ows_ip(&self) -> 
+String {
+    |        
+^^^^^^^^^^^^^^
+...
+379 | async fn test_u
+sb_protection(&self) 
+-> Result<(), 
+Box<dyn 
+std::error::Error>> {
+    |          
+^^^^^^^^^^^^^^^^^^^
+...
+483 |     async fn se
+nd_test_alert(&self) 
+-> Result<(), 
+Box<dyn 
+std::error::Error>> {
+    |              
+^^^^^^^^^^^^^^^
+
+warning: field 
+`known_files` is 
+never read
+  --> src\protection_
+modules\usb_protectio
+n.rs:79:5
+   |
+77 | pub struct 
+USBProtection {
+   |            
+------------- field 
+in this struct
+78 |     
+known_devices: 
+HashSet<String>, // 
+Tracks known USB 
+devices (drive 
+letters like "F:")
+79 |     
+known_files: 
+HashSet<String>, // 
+Track files we've 
+already seen (full 
+path strings)
+   |     ^^^^^^^^^^^
+
+warning: multiple 
+associated items are 
+never used
+   --> src\protection
+_modules\usb_protecti
+on.rs:257:14
+    |
+ 83 | impl 
+USBProtection {
+    | 
+------------------ 
+associated items in 
+this implementation
+...
+257 |     async fn 
+handle_blocked_usb(
+    |              
+^^^^^^^^^^^^^^^^^^
+...
+338 |     async fn mo
+nitor_file_operations
+(
+    |              ^^
+^^^^^^^^^^^^^^^^^^^^^
+...
+513 |     fn scan_fil
+es(drive_path: &str) 
+-> Result<HashSet<Str
+ing>, Box<dyn 
+std::error::Error>> {
+    |        
+^^^^^^^^^^
+...
+628 |     fn 
+get_hostname() -> 
+String {
+    |        
+^^^^^^^^^^^^
+...
+637 |     fn calculat
+e_usb_severity(
+    |        ^^^^^^^^
+^^^^^^^^^^^^^^
+...
+771 |     async fn se
+nd_file_block_alert(
+    |              
+^^^^^^^^^^^^^^^^^^^^^
+...
+795 |     async fn se
+nd_suspicious_file_al
+ert(
+    |              ^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^
+
+warning: fields 
+`agent_id` and 
+`token` are never 
+read
+  --> src\protection_
+modules\file_protecti
+on\mod.rs:53:5
+   |
+37 | pub struct 
+FileProtectionModule 
+{
+   |            
+-------------------- 
+fields in this struct
+...
+53 |     agent_id: 
+u64,
+   |     ^^^^^^^^
+54 |     token: 
+String,
+   |     ^^^^^
+
+warning: field 
+`attributes` is 
+never read
+  --> src\protection_
+modules\file_protecti
+on\fs_index.rs:28:9
+   |
+17 | pub struct 
+FileSystemNode {
+   |            
+-------------- field 
+in this struct
+...
+28 |     pub 
+attributes: u32,
+   |         
+^^^^^^^^^^
+   |
+   = note: 
+`FileSystemNode` has 
+derived impls for 
+the traits `Clone` 
+and `Debug`, but 
+these are 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: associated 
+items `new_arc`, 
+`get_node_by_path`, 
+and `is_expanded` 
+are never used
+   --> src\protection
+_modules\file_protect
+ion\fs_index.rs:57:12
+    |
+ 41 | impl 
+FilesystemIndex {
+    | 
+-------------------- 
+associated items in 
+this implementation
+...
+ 57 |     pub fn 
+new_arc() -> 
+Arc<Self> {
+    |            
+^^^^^^^
+...
+139 |     pub fn get_
+node_by_path(&self, 
+display_path: &str) 
+-> Option<FileSystemN
+ode> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+165 |     pub fn 
+is_expanded(&self, 
+node_id: u64) -> 
+bool {
+    |            
+^^^^^^^^^^^
+
+warning: methods `ent
+ry_type_to_string`, 
+`get_all_nodes`, and 
+`search_local` are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\fs_index.rs:279:1
+2
+    |
+277 | impl 
+FilesystemIndex {
+    | 
+-------------------- 
+methods in this 
+implementation
+278 |     /// 
+Convert EntryType to 
+string for UI
+279 |     pub fn entr
+y_type_to_string(&sel
+f, entry_type: 
+EntryType) -> 
+&'static str {
+    |            
+^^^^^^^^^^^^^^^^^^^^
+...
+289 |     pub fn 
+get_all_nodes(&self) 
+-> 
+Vec<FileSystemNode> {
+    |            
+^^^^^^^^^^^^^
+...
+295 |     pub fn 
+search_local(&self, 
+parent_id: u64, 
+query: &str) -> 
+Vec<FileSystemNode> {
+    |            
+^^^^^^^^^^^^
+
+warning: struct 
+`PathNormalizer` is 
+never constructed
+   --> src\protection
+_modules\file_protect
+ion\path_normalizer.r
+s:249:12
+    |
+249 | pub struct 
+PathNormalizer;
+    |            
+^^^^^^^^^^^^^^
+
+warning: associated 
+functions `normalize_
+display_path`, 
+`to_wide_string`, 
+`is_nt_path_like`, 
+and `validate_path_fo
+rmat` are never used
+   --> src\protection
+_modules\file_protect
+ion\path_normalizer.r
+s:253:12
+    |
+251 | impl 
+PathNormalizer {
+    | 
+------------------- 
+associated functions 
+in this 
+implementation
+252 |     /// 
+Convert to display 
+format (for 
+debugging only)
+253 |     pub fn norm
+alize_display_path(pa
+th: &str) -> String {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^
+...
+264 |     pub fn 
+to_wide_string(path: 
+&str) -> Vec<u16> {
+    |            
+^^^^^^^^^^^^^^
+...
+272 |     pub fn is_n
+t_path_like(path: 
+&str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+...
+277 |     pub fn vali
+date_path_format(path
+: &str) -> 
+Result<(), String> {
+    |            
+^^^^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`follow_symlinks`, 
+`skip_hidden`, and 
+`skip_system` are 
+never read
+  --> src\protection_
+modules\file_protecti
+on\filesystem_scanner
+.rs:17:9
+   |
+16 | pub struct 
+ScanConfig {
+   |            
+---------- fields in 
+this struct
+17 |     pub 
+follow_symlinks: 
+bool,
+   |         
+^^^^^^^^^^^^^^^
+18 |     pub 
+skip_hidden: bool,
+   |         
+^^^^^^^^^^^
+19 |     pub 
+skip_system: bool,
+   |         
+^^^^^^^^^^^
+
+warning: fields 
+`path_resolver` and 
+`config` are never 
+read
+  --> src\protection_
+modules\file_protecti
+on\filesystem_scanner
+.rs:35:5
+   |
+33 | pub struct 
+FileSystemScanner {
+   |            
+----------------- 
+fields in this struct
+34 |     index: 
+Arc<FilesystemIndex>,
+35 |     
+path_resolver: 
+Arc<PathResolver>,  
+// For DOS ??? NT 
+path conversion
+   |     
+^^^^^^^^^^^^^
+36 |     config: 
+ScanConfig,
+   |     ^^^^^^
+
+warning: associated 
+items `with_config`, 
+`config`, and 
+`set_config` are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\filesystem_scanne
+r.rs:50:12
+    |
+ 39 | impl 
+FileSystemScanner {
+    | ---------------
+------- associated 
+items in this 
+implementation
+...
+ 50 |     pub fn 
+with_config(index: Ar
+c<FilesystemIndex>, 
+path_resolver: 
+Arc<PathResolver>, 
+config: ScanConfig) 
+-> Self {
+    |            
+^^^^^^^^^^^
+...
+306 |     pub fn 
+config(&self) -> 
+&ScanConfig {
+    |            
+^^^^^^
+...
+311 |     pub fn 
+set_config(&mut 
+self, config: 
+ScanConfig) {
+    |            
+^^^^^^^^^^
+
+warning: methods `res
+olve_nt_path_internal
+` and 
+`get_display_path` 
+are never used
+   --> src\protection
+_modules\file_protect
+ion\query_interface.r
+s:144:12
+    |
+ 74 | impl 
+QueryInterface {
+    | 
+------------------- 
+methods in this 
+implementation
+...
+144 |     pub fn reso
+lve_nt_path_internal(
+&self, node_id: u64) 
+-> Result<String, 
+String> {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+...
+169 |     pub fn get_
+display_path(&self, 
+node_id: u64) -> 
+Result<String, 
+String> {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`init_step2` is 
+never used
+  --> src\protection_
+modules\file_protecti
+on\comms\mod.rs:16:8
+   |
+16 | pub fn 
+init_step2(
+   |        
+^^^^^^^^^^
+
+warning: variants 
+`AccessDenied`, 
+`InvalidRequest`, 
+`NotImplemented`, 
+and 
+`SearchUnavailable` 
+are never constructed
+   --> src\protection
+_modules\file_protect
+ion\comms\protocol.rs
+:167:5
+    |
+165 | pub enum 
+ErrorCode {
+    |          
+--------- variants 
+in this enum
+166 |     
+NodeNotFound,
+167 |     
+AccessDenied,
+    |     
+^^^^^^^^^^^^
+168 |     
+InvalidRequest,
+    |     
+^^^^^^^^^^^^^^
+...
+172 |     
+NotImplemented,
+    |     
+^^^^^^^^^^^^^^
+173 |     
+SearchUnavailable,
+    |     
+^^^^^^^^^^^^^^^^^
+    |
+    = note: 
+`ErrorCode` has 
+derived impls for 
+the traits `Clone` 
+and `Debug`, but 
+these are 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: associated 
+function `success` 
+is never used
+   --> src\protection
+_modules\file_protect
+ion\comms\protocol.rs
+:204:12
+    |
+195 | impl 
+AgentResponse {
+    | 
+------------------ 
+associated function 
+in this 
+implementation
+...
+204 |     pub fn 
+success(message: 
+&str) -> Self {
+    |            
+^^^^^^^
+
+warning: struct 
+`TransportConfig` is 
+never constructed
+  --> src\protection_
+modules\file_protecti
+on\comms\transport.rs
+:13:12
+   |
+13 | pub struct 
+TransportConfig {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: struct 
+`TransportServer` is 
+never constructed
+  --> src\protection_
+modules\file_protecti
+on\comms\transport.rs
+:36:12
+   |
+36 | pub struct 
+TransportServer {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: associated 
+items `new`, 
+`document_design`, 
+`mark_design_ready`, 
+and 
+`is_design_ready` 
+are never used
+  --> src\protection_
+modules\file_protecti
+on\comms\transport.rs
+:44:12
+   |
+42 | impl 
+TransportServer {
+   | 
+-------------------- 
+associated items in 
+this implementation
+43 |     /// Create 
+new transport server 
+(design phase)
+44 |     pub fn 
+new(api_server: 
+Arc<QueryApiServer>, 
+config: 
+TransportConfig) -> 
+Self {
+   |            ^^^
+...
+53 |     pub fn docum
+ent_design(&self) {
+   |            
+^^^^^^^^^^^^^^^
+...
+87 |     pub fn mark_
+design_ready(&self) {
+   |            
+^^^^^^^^^^^^^^^^^
+...
+95 |     pub fn is_de
+sign_ready(&self) -> 
+bool {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: function 
+`query_dos_device` 
+is never used
+  --> src\protection_
+modules\file_protecti
+on\fltlib.rs:24:8
+   |
+24 | pub fn query_dos
+_device(device_name: 
+&str) -> 
+Result<String, 
+String> {
+   |        
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`init_step3` is 
+never used
+  --> src\protection_
+modules\file_protecti
+on\ui\mod.rs:16:8
+   |
+16 | pub fn init_step
+3(api_server: std::sy
+nc::Arc<QueryApiServe
+r>) -> std::sync::Arc
+<ExplorerController> 
+{
+   |        
+^^^^^^^^^^
+
+warning: enum 
+`NodeUIState` is 
+never used
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_state.
+rs:10:10
+   |
+10 | pub enum 
+NodeUIState {
+   |          
+^^^^^^^^^^^
+
+warning: struct 
+`SelectionInfo` is 
+never constructed
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_state.
+rs:18:12
+   |
+18 | pub struct 
+SelectionInfo {
+   |            
+^^^^^^^^^^^^^
+
+warning: struct 
+`PendingProtection` 
+is never constructed
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_state.
+rs:28:12
+   |
+28 | pub struct 
+PendingProtection {
+   |            
+^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`ExplorerState` is 
+never constructed
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_state.
+rs:38:12
+   |
+38 | pub struct 
+ExplorerState {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\ui\explorer_state
+.rs:60:12
+    |
+ 58 | impl 
+ExplorerState {
+    | 
+------------------ 
+associated items in 
+this implementation
+ 59 |     /// Create 
+new empty explorer 
+state
+ 60 |     pub fn 
+new() -> Arc<Self> {
+    |            ^^^
+...
+ 76 |     pub fn get_
+node_state(&self, 
+node_id: u64) -> 
+NodeUIState {
+    |            
+^^^^^^^^^^^^^^
+...
+ 84 |     pub fn mark
+_expanding(&self, 
+node_id: u64) {
+    |            
+^^^^^^^^^^^^^^
+...
+ 92 |     pub fn 
+mark_expanded(&self, 
+node_id: u64) {
+    |            
+^^^^^^^^^^^^^
+...
+ 99 |     pub fn mark
+_collapsed(&self, 
+node_id: u64) {
+    |            
+^^^^^^^^^^^^^^
+...
+106 |     pub fn 
+is_expanded(&self, 
+node_id: u64) -> 
+bool {
+    |            
+^^^^^^^^^^^
+...
+111 |     pub fn 
+is_expanding(&self, 
+node_id: u64) -> 
+bool {
+    |            
+^^^^^^^^^^^^
+...
+120 |     pub fn 
+get_selection(&self) 
+-> Option<SelectionIn
+fo> {
+    |            
+^^^^^^^^^^^^^
+...
+125 |     pub fn 
+select_node(&self, 
+selection: 
+SelectionInfo) {
+    |            
+^^^^^^^^^^^
+...
+131 |     pub fn clea
+r_selection(&self) {
+    |            
+^^^^^^^^^^^^^^^
+...
+136 |     pub fn 
+is_selected(&self, 
+node_id: u64) -> 
+bool {
+    |            
+^^^^^^^^^^^
+...
+148 |     pub fn get_
+pending_protection(&s
+elf) -> Option<Pendin
+gProtection> {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^
+...
+153 |     pub fn set_
+pending_protection(&s
+elf, protection: 
+PendingProtection) {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^
+...
+168 |     pub fn clea
+r_pending_protection(
+&self) {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+...
+177 |     pub fn set_
+search_query(&self, 
+query: 
+Option<String>) {
+    |            
+^^^^^^^^^^^^^^^^
+...
+182 |     pub fn get_
+search_query(&self) 
+-> Option<String> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+191 |     pub fn 
+is_loading(&self) -> 
+bool {
+    |            
+^^^^^^^^^^
+...
+196 |     pub fn 
+set_loading(&self, 
+loading: bool) {
+    |            
+^^^^^^^^^^^
+...
+201 |     pub fn 
+set_error(&self, 
+error: 
+Option<String>) {
+    |            
+^^^^^^^^^
+...
+206 |     pub fn 
+get_error(&self) -> 
+Option<String> {
+    |            
+^^^^^^^^^
+...
+211 |     pub fn 
+clear_error(&self) {
+    |            
+^^^^^^^^^^^
+...
+220 |     pub fn 
+reset(&self) {
+    |            
+^^^^^
+...
+230 |     pub fn 
+get_stats(&self) -> 
+ExplorerStats {
+    |            
+^^^^^^^^^
+
+warning: struct 
+`ExplorerStats` is 
+never constructed
+   --> src\protection
+_modules\file_protect
+ion\ui\explorer_state
+.rs:250:12
+    |
+250 | pub struct 
+ExplorerStats {
+    |            
+^^^^^^^^^^^^^
+
+warning: struct 
+`InteractionEngine` 
+is never constructed
+ --> src\protection_m
+odules\file_protectio
+n\ui\interaction_rule
+s.rs:8:12
+  |
+8 | pub struct 
+InteractionEngine {
+  |            
+^^^^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\ui\interaction_ru
+les.rs:15:12
+    |
+ 13 | impl 
+InteractionEngine {
+    | ---------------
+------- associated 
+items in this 
+implementation
+ 14 |     /// Create 
+new interaction 
+engine
+ 15 |     pub fn 
+new(api_server: 
+Arc<QueryApiServer>, 
+ui_state: 
+Arc<ExplorerState>) 
+-> Self {
+    |            ^^^
+...
+ 25 |     pub async 
+fn handle_folder_clic
+k(&self, node_id: 
+u64, node_name: 
+&str, is_accessible: 
+bool, has_children: 
+bool) {
+    |                
+  ^^^^^^^^^^^^^^^^^^^
+...
+ 44 |     pub async 
+fn handle_file_click(
+&self, node_id: u64, 
+node_name: &str, 
+is_accessible: bool) 
+{
+    |                
+  ^^^^^^^^^^^^^^^^^
+...
+ 63 |     pub async 
+fn handle_drive_click
+(&self, node_id: 
+u64, drive_name: 
+&str, drive_letter: 
+&str, has_children: 
+bool) {
+    |                
+  ^^^^^^^^^^^^^^^^^^
+...
+ 86 |     pub async 
+fn handle_expand_clic
+k(&self, node_id: 
+u64, node_name: 
+&str) -> Result<(), 
+String> {
+    |                
+  ^^^^^^^^^^^^^^^^^^^
+...
+140 |     pub async 
+fn handle_collapse_cl
+ick(&self, node_id: 
+u64, node_name: 
+&str) -> Result<(), 
+String> {
+    |                
+  
+^^^^^^^^^^^^^^^^^^^^^
+...
+182 |     pub async 
+fn 
+handle_search(&self, 
+parent_id: u64, 
+query: &str, limit: 
+Option<usize>) -> 
+Result<Vec<u64>, 
+String> {
+    |                
+  ^^^^^^^^^^^^^
+...
+224 |     pub fn 
+clear_search(&self) {
+    |            
+^^^^^^^^^^^^
+...
+235 |     pub async 
+fn handle_mark_for_pr
+otection(
+    |                
+  ^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+...
+276 |     pub fn hand
+le_clear_protection(&
+self) {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^
+...
+286 |     pub fn 
+api_server(&self) -> 
+&Arc<QueryApiServer> 
+{
+    |            
+^^^^^^^^^^
+...
+291 |     pub fn 
+ui_state(&self) -> 
+&Arc<ExplorerState> {
+    |            
+^^^^^^^^
+...
+296 |     pub fn 
+reset(&self) {
+    |            
+^^^^^
+
+warning: struct 
+`ExplorerController` 
+is never constructed
+  --> src\protection_
+modules\file_protecti
+on\ui\explorer_contro
+ller.rs:10:12
+   |
+10 | pub struct 
+ExplorerController {
+   |            
+^^^^^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\ui\explorer_contr
+oller.rs:16:12
+    |
+ 14 | impl 
+ExplorerController {
+    | ---------------
+-------- associated 
+items in this 
+implementation
+ 15 |     /// Create 
+new explorer 
+controller
+ 16 |     pub fn 
+new(api_server: 
+Arc<QueryApiServer>) 
+-> Arc<Self> {
+    |            ^^^
+...
+ 30 |     pub async 
+fn initialize(&self) 
+-> Result<Vec<u64>, 
+String> {
+    |                
+  ^^^^^^^^^^
+...
+ 68 |     pub fn inte
+raction_engine(&self)
+ -> &Arc<InteractionE
+ngine> {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+ 73 |     pub fn 
+ui_state(&self) -> 
+&Arc<ExplorerState> {
+    |            
+^^^^^^^^
+...
+ 82 |     pub async 
+fn 
+load_children(&self, 
+parent_id: u64) -> Re
+sult<Vec<SelectionInf
+o>, String> {
+    |                
+  ^^^^^^^^^^^^^
+...
+119 |     pub async 
+fn 
+get_node_info(&self, 
+node_id: u64) -> Resu
+lt<SelectionInfo, 
+String> {
+    |                
+  ^^^^^^^^^^^^^
+...
+156 |     pub fn 
+show_summary(&self) {
+    |            
+^^^^^^^^^^^^
+...
+193 |     pub fn 
+reset(&self) {
+    |            
+^^^^^
+
+warning: function 
+`init_step4` is 
+never used
+  --> src\protection_
+modules\file_protecti
+on\policy\mod.rs:26:8
+   |
+26 | pub fn 
+init_step4(
+   |        
+^^^^^^^^^^
+
+warning: methods 
+`emit_kernel_event` 
+and `close` are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\policy\kernel_ada
+pter.rs:362:12
+    |
+215 | impl 
+KernelAdapter {
+    | 
+------------------ 
+methods in this 
+implementation
+...
+362 |     pub fn emit
+_kernel_event(&self, 
+event: KernelEvent) 
+-> Result<(), 
+String> {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+379 |     pub fn 
+close(&self) {
+    |            
+^^^^^
+
+warning: struct 
+`PolicyStatus` is 
+never constructed
+  --> src\protection_
+modules\file_protecti
+on\policy\policy_stor
+e.rs:24:12
+   |
+24 | pub struct 
+PolicyStatus {
+   |            
+^^^^^^^^^^^^
+
+warning: enum 
+`EnforcementMode` is 
+never used
+  --> src\protection_
+modules\file_protecti
+on\policy\policy_stor
+e.rs:34:10
+   |
+34 | pub enum 
+EnforcementMode {
+   |          
+^^^^^^^^^^^^^^^
+
+warning: variants 
+`Degraded` and 
+`Unknown` are never 
+constructed
+  --> src\protection_
+modules\file_protecti
+on\policy\policy_stor
+e.rs:44:5
+   |
+41 | pub enum 
+HealthStatus {
+   |          
+------------ 
+variants in this enum
+...
+44 |     Degraded,   
+    // Policy 
+partially applied
+   |     ^^^^^^^^
+45 |     Failed,     
+    // Policy failed 
+to apply
+46 |     Unknown,    
+    // Status unknown
+   |     ^^^^^^^
+   |
+   = note: 
+`HealthStatus` has 
+derived impls for 
+the traits `Clone` 
+and `Debug`, but 
+these are 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: methods `get
+_node_id_by_kernel_id
+`, `update_policy_sta
+tus`, `get_stats`, 
+and `clear` are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_sto
+re.rs:90:12
+    |
+ 55 | impl 
+PolicyStore {
+    | 
+---------------- 
+methods in this 
+implementation
+...
+ 90 |     pub fn get_
+node_id_by_kernel_id(
+&self, 
+kernel_policy_id: 
+u64) -> Option<u64> {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+...
+189 |     pub fn upda
+te_policy_status(&sel
+f, policy_id: u64, 
+is_active: bool) -> 
+bool {
+    |            
+^^^^^^^^^^^^^^^^^^^^
+...
+208 |     pub fn 
+get_stats(&self) -> 
+PolicyStoreStats {
+    |            
+^^^^^^^^^
+...
+223 |     pub fn 
+clear(&self) {
+    |            
+^^^^^
+
+warning: struct 
+`PolicyStoreStats` 
+is never constructed
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_sto
+re.rs:236:12
+    |
+236 | pub struct 
+PolicyStoreStats {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: struct 
+`EnforcementStats` 
+is never constructed
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_sto
+re.rs:243:12
+    |
+243 | pub struct 
+EnforcementStats {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: methods `get
+_node_id_by_kernel_id
+`, `get_stats`, 
+`path_resolver`, 
+`policy_store`, and `
+get_enforcement_stats
+` are never used
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_eng
+ine.rs:71:12
+    |
+ 16 | impl 
+PolicyEngine {
+    | 
+----------------- 
+methods in this 
+implementation
+...
+ 71 |     pub fn get_
+node_id_by_kernel_id(
+&self, 
+kernel_policy_id: 
+u64) -> Option<u64> {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+...
+201 |     pub fn 
+get_stats(&self) -> 
+PolicyEngineStats {
+    |            
+^^^^^^^^^
+...
+218 |     pub fn 
+path_resolver(&self) 
+-> 
+&Arc<PathResolver> {
+    |            
+^^^^^^^^^^^^^
+...
+223 |     pub fn 
+policy_store(&self) 
+-> &Arc<PolicyStore> 
+{
+    |            
+^^^^^^^^^^^^
+...
+296 |     pub fn get_
+enforcement_stats(&se
+lf) -> 
+EnforcementStats {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`PolicyEngineStats` 
+is never constructed
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_eng
+ine.rs:334:12
+    |
+334 | pub struct 
+PolicyEngineStats {
+    |            
+^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`intent` and `effecti
+ve_operations` are 
+never read
+  --> src\protection_
+modules\file_protecti
+on\policy\policy_prev
+iew.rs:11:9
+   |
+10 | pub struct 
+PolicyPreview {
+   |            
+------------- fields 
+in this struct
+11 |     pub intent: 
+PolicyIntent,
+   |         ^^^^^^
+12 |     pub effectiv
+e_operations: 
+KernelOperations,
+   |         
+^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`PolicyPreview` has 
+derived impls for 
+the traits `Clone` 
+and `Debug`, but 
+these are 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: associated 
+functions `generate_s
+afety_report`, `requi
+res_confirmation`, 
+and `get_confirmation
+_message` are never 
+used
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_gua
+rd.rs:90:12
+    |
+ 19 | impl 
+PolicyGuard {
+    | 
+---------------- 
+associated functions 
+in this 
+implementation
+...
+ 90 |     pub fn gene
+rate_safety_report(in
+tent: &PolicyIntent, 
+kernel_connected: 
+bool) -> String {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^
+...
+138 |     pub fn requ
+ires_confirmation(int
+ent: &PolicyIntent) 
+-> bool {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+...
+145 |     pub fn get_
+confirmation_message(
+intent: 
+&PolicyIntent) -> 
+Option<String> {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+
+warning: field 
+`index` is never read
+  --> src\protection_
+modules\file_protecti
+on\policy\policy_dry_
+run.rs:30:5
+   |
+29 | pub struct 
+DryRunEvaluator {
+   |            
+--------------- 
+field in this struct
+30 |     index: 
+Arc<FilesystemIndex>,
+   |     ^^^^^
+
+warning: associated 
+function 
+`quick_dry_run` is 
+never used
+   --> src\protection
+_modules\file_protect
+ion\policy\policy_dry
+_run.rs:146:12
+    |
+ 33 | impl 
+DryRunEvaluator {
+    | 
+-------------------- 
+associated function 
+in this 
+implementation
+...
+146 |     pub fn quic
+k_dry_run(intent: 
+&PolicyIntent) -> 
+Vec<(String, bool)> {
+    |            
+^^^^^^^^^^^^^
+
+warning: fields 
+`server_handle`, 
+`shutdown_tx`, and 
+`ws_server` are 
+never read
+  --> src\protection_
+modules\file_protecti
+on\networking\mod.rs:
+66:5
+   |
+65 | pub struct 
+ServerHandle {
+   |            
+------------ fields 
+in this struct
+66 |     
+server_handle: tokio:
+:task::JoinHandle<()>
+,
+   |     
+^^^^^^^^^^^^^
+67 |     
+shutdown_tx: tokio::s
+ync::oneshot::Sender<
+()>,
+   |     ^^^^^^^^^^^
+68 |     ws_server: 
+Arc<WebSocketServer>,
+   |     ^^^^^^^^^
+
+warning: methods 
+`shutdown`, 
+`ws_server`, `emit_fi
+lesystem_changed`, 
+and `emit_kernel_bloc
+ked` are never used
+   --> src\protection
+_modules\file_protect
+ion\networking\mod.rs
+:73:18
+    |
+ 71 | impl 
+ServerHandle {
+    | 
+----------------- 
+methods in this 
+implementation
+ 72 |     /// 
+Gracefully shutdown 
+the server
+ 73 |     pub async 
+fn shutdown(self) -> 
+Result<(), String> {
+    |                
+  ^^^^^^^^
+...
+ 88 |     pub fn 
+ws_server(&self) -> 
+Arc<WebSocketServer> 
+{
+    |            
+^^^^^^^^^
+...
+ 93 |     pub fn emit
+_filesystem_changed(&
+self, node_id: u64, 
+change_type: &str) {
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^
+...
+100 |      pub fn emi
+t_kernel_blocked(&sel
+f, operation: &str, 
+policy_id: u64, 
+process: &str) {
+    |             
+^^^^^^^^^^^^^^^^^^^
+
+warning: struct `Mock
+KernelEventGenerator`
+ is never constructed
+   --> src\protection
+_modules\file_protect
+ion\kernel\kernel_eve
+nt_bridge.rs:169:12
+    |
+169 | pub struct Mock
+KernelEventGenerator 
+{
+    |            ^^^^
+^^^^^^^^^^^^^^^^^^^^
+
+warning: associated 
+items `new` and `gene
+rate_test_event` are 
+never used
+   --> src\protection
+_modules\file_protect
+ion\kernel\kernel_eve
+nt_bridge.rs:176:12
+    |
+174 | impl MockKernel
+EventGenerator {
+    | ---------------
+-------------- 
+associated items in 
+this implementation
+175 |     /// Create 
+new mock generator
+176 |     pub fn 
+new(event_sender: mps
+c::Sender<KernelEvent
+>) -> Self {
+    |            ^^^
+...
+184 |     pub async 
+fn generate_test_even
+t(&mut self, 
+node_id: u64, 
+policy_id: u64, 
+process: &str) {
+    |                
+  ^^^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`agent_id`, 
+`communicator`, and 
+`realtime_tx` are 
+never read
+   --> src\protection
+_modules\security_mon
+itor\mod.rs:740:5
+    |
+739 | pub struct Secu
+rityMonitorProtection
+ {
+    |            ----
+---------------------
+ fields in this 
+struct
+740 |     agent_id: 
+u64,
+    |     ^^^^^^^^
+...
+750 |     
+communicator: Arc<RwL
+ock<ServerCommunicato
+r>>,
+    |     
+^^^^^^^^^^^^
+751 |     
+realtime_tx: Option<m
+psc::Sender<RealtimeU
+pdate>>,
+    |     ^^^^^^^^^^^
+
+warning: methods `sen
+d_ocr_status_to_serve
+r` and `send_realtime
+_update` are never 
+used
+    --> src\protectio
+n_modules\security_mo
+nitor\mod.rs:985:14
+     |
+ 787 | impl SecurityM
+onitorProtection {
+     | --------------
+---------------- 
+methods in this 
+implementation
+...
+ 985 |     async fn s
+end_ocr_status_to_ser
+ver(
+     |              ^
+^^^^^^^^^^^^^^^^^^^^^
+^^^
+...
+1020 |     fn 
+send_realtime_update(
+     |        
+^^^^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`base_confidence` 
+and `context_boost` 
+are never read
+  --> src\protection_
+modules\security_moni
+tor\rule_engine.rs:26
+:5
+   |
+22 | struct 
+SecurityRule {
+   |        
+------------ fields 
+in this struct
+...
+26 |     
+base_confidence: f32,
+   |     
+^^^^^^^^^^^^^^^
+27 |     
+context_boost: f32,
+   |     
+^^^^^^^^^^^^^
+
+warning: field `busin
+ess_indicators` is 
+never read
+  --> src\protection_
+modules\security_moni
+tor\rule_engine.rs:34
+:5
+   |
+31 | struct ContextAw
+areValidator {
+   |        ---------
+------------ field 
+in this struct
+...
+34 |     
+business_indicators: 
+Vec<&'static str>,
+   |     
+^^^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`confidence` and 
+`context_confidence` 
+are never read
+    --> src\protectio
+n_modules\security_mo
+nitor\monitor.rs:1879
+:5
+     |
+1877 | struct 
+ViolationRecord {
+     |        
+--------------- 
+fields in this struct
+1878 |     
+rule_type: String,
+1879 |     
+confidence: f32,
+     |     ^^^^^^^^^^
+1880 |     
+context_confidence: 
+f32,
+     |     
+^^^^^^^^^^^^^^^^^^
+     |
+     = note: 
+`ViolationRecord` 
+has derived impls 
+for the traits 
+`Clone` and `Debug`, 
+but these are 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: structure 
+field `violationIds` 
+should have a snake 
+case name
+   --> src\communicat
+ion.rs:251:5
+    |
+251 |     
+violationIds: &'a 
+Vec<u64>,
+    |     
+^^^^^^^^^^^^ help: 
+convert the 
+identifier to snake 
+case: `violation_ids`
+    |
+    = note: `#[warn(n
+on_snake_case)]` 
+(part of `#[warn(nons
+tandard_style)]`) on 
+by default
+
+warning: unused 
+`Result` that must 
+be used
+   --> src\protection
+_modules\browser_moni
+tor.rs:150:49
+    |
+150 | ...            
+       PostMessageW(H
+WND(hwnd_val as _), 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+       ^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+    |
+    = note: this 
+`Result` may be an 
+`Err` variant, which 
+should be handled
+    = note: `#[warn(u
+nused_must_use)]` 
+(part of 
+`#[warn(unused)]`) 
+on by default
+help: use `let _ = 
+...` to ignore the 
+resulting value
+    |
+150 |                
+                     
+            let _ = P
+ostMessageW(HWND(hwnd
+_val as _), 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+                     
+            +++++++
+
+warning: unused 
+`Result` that must 
+be used
+   --> src\protection
+_modules\browser_moni
+tor.rs:162:41
+    |
+162 | ...            
+       
+PostMessageW(hwnd, 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+       ^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+    |
+    = note: this 
+`Result` may be an 
+`Err` variant, which 
+should be handled
+help: use `let _ = 
+...` to ignore the 
+resulting value
+    |
+162 |                
+                     
+    let _ = 
+PostMessageW(hwnd, 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+                     
+    +++++++
+
+warning: unused 
+`Result` that must 
+be used
+   --> src\protection
+_modules\partial_acce
+ss_manager.rs:143:41
+    |
+143 | ...            
+       
+PostMessageW(hwnd, 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+       ^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+    |
+    = note: this 
+`Result` may be an 
+`Err` variant, which 
+should be handled
+help: use `let _ = 
+...` to ignore the 
+resulting value
+    |
+143 |                
+                     
+    let _ = 
+PostMessageW(hwnd, 
+WM_CLOSE, WPARAM(0), 
+LPARAM(0));
+    |                
+                     
+    +++++++
+
+warning: `dlp-agent` 
+(lib) generated 136 
+warnings (run `cargo 
+fix --lib -p 
+dlp-agent` to apply 
+37 suggestions)
+warning: static 
+`TIMING_CONFIG` is 
+never used
+  --> 
+src\main.rs:37:8
+   |
+37 | static 
+TIMING_CONFIG: Lazy<G
+lobalTimingConfig> = 
+Lazy::new(|| 
+GlobalTimingConfig {
+   |        
+^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(dead_code)]` 
+(part of 
+`#[warn(unused)]`) 
+on by default
+
+warning: fields `agen
+t_poll_interval`, 
+`ocr_interval`, `secu
+rity_monitor_maintena
+nce`, `policy_check_i
+nterval`, and `token_
+refresh_interval` 
+are never read
+  --> 
+src\main.rs:47:5
+   |
+46 | pub struct 
+GlobalTimingConfig {
+   |            
+------------------ 
+fields in this struct
+47 |     
+agent_poll_interval: 
+Duration,
+   |     
+^^^^^^^^^^^^^^^^^^^
+48 |     
+ocr_interval: 
+Duration,
+   |     ^^^^^^^^^^^^
+49 |     security_mon
+itor_maintenance: 
+Duration,
+   |     ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+50 |     policy_check
+_interval: Duration,
+   |     
+^^^^^^^^^^^^^^^^^^^^^
+51 |     token_refres
+h_interval: Duration,
+   |     ^^^^^^^^^^^^
+^^^^^^^^^^
+   |
+   = note: 
+`GlobalTimingConfig` 
+has a derived impl 
+for the trait 
+`Debug`, but this is 
+intentionally 
+ignored during dead 
+code analysis
+
+warning: methods `exe
+cute_protections_no_p
+olicy_check`, 
+`poll_cycle`, `should
+_refresh_token`, `exe
+cute_protections_old`
+, and `execute_protec
+tions` are never used
+   --> src\agent_core
+.rs:159:14
+    |
+ 44 | impl AgentCore 
+{
+    | -------------- 
+methods in this 
+implementation
+...
+159 |     async fn ex
+ecute_protections_no_
+policy_check(&mut 
+self) -> Result<(), 
+Box<dyn Error + Send 
++ Sync>> {
+    |              ^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+...
+186 |     async fn 
+poll_cycle(&mut 
+self) -> Result<(), 
+Box<dyn Error + Send 
++ Sync>> {
+    |              
+^^^^^^^^^^
+...
+206 |        fn shoul
+d_refresh_token(&self
+) -> bool {
+    |           
+^^^^^^^^^^^^^^^^^^^^
+...
+242 |      async fn e
+xecute_protections_ol
+d(&mut self) -> 
+Result<(), Box<dyn 
+Error + Send + 
+Sync>> {
+    |               ^
+^^^^^^^^^^^^^^^^^^^^^
+^
+...
+412 |     async fn ex
+ecute_protections(&mu
+t self) -> 
+Result<(), Box<dyn 
+Error + Send + 
+Sync>> {
+    |              
+^^^^^^^^^^^^^^^^^^^
+
+warning: `dlp-agent` 
+(bin "dlp-agent") 
+generated 138 
+warnings (135 
+duplicates)
+    Finished `dev` 
+profile [unoptimized 
++ debuginfo] 
+target(s) in 10.05s

@@ -1,0 +1,580 @@
+cargo :     Checking dlp-agent v1.0.0 (D:\all\dlp-agent-main)
+At line:1 char:30
++ $env:RUSTFLAGS=""; $output = cargo check 2>&1; $output | Out-File -Fi ...
++                              ~~~~~~~~~~~~~~~~
+    + CategoryInfo              : NotSpe    cified: (    Che    cking dl...dlp-a    gent-main):Strin    g) [], RemoteExc    eption
+    + FullyQualified    ErrorId : Native    CommandError
+ 
+error: incorrect unicode escape sequence
+   --> src\agent_core.rs:390:37
+    |
+390 |                         log::info!("\u2705 File Protection policy is ACTIVE!");
+    |                                     ^^^
+    |
+help: format of unicode escape sequences uses braces
+    |
+390 -                         log::info!("\u2705 File Protection policy is ACTIVE!");
+390 +                         log::info!("\u{2705} File Protection policy is ACTIVE!");
+    |
+
+error: incorrect unicode escape sequence
+   --> src\agent_core.rs:422:29
+    |
+422 |                 log::warn!("\u26a0\ufe0f Could not re-report capabilities after policy refresh: {}", e);
+    |                             ^^^
+    |
+help: format of unicode escape sequences uses braces
+    |
+422 -                 log::warn!("\u26a0\ufe0f Could not re-report capabilities after policy refresh: {}", e);
+422 +                 log::warn!("\u{26a0}\ufe0f Could not re-report capabilities after policy refresh: {}", e);
+    |
+
+error: incorrect unicode escape sequence
+   --> src\agent_core.rs:422:35
+    |
+422 |                 log::warn!("\u26a0\ufe0f Could not re-report capabilities after policy refresh: {}", e);
+    |                                   ^^^
+    |
+help: format of unicode escape sequences uses braces
+    |
+422 -                 log::warn!("\u26a0\ufe0f Could not re-report capabilities after policy refresh: {}", e);
+422 +                 log::warn!("\u26a0\u{fe0f} Could not re-report capabilities after policy refresh: {}", e);
+    |
+
+error: incorrect unicode escape sequence
+   --> src\agent_core.rs:501:21
+    |
+501 |         log::info!("\u2705 Agent initialized and capabilities reported");
+    |                     ^^^
+    |
+help: format of unicode escape sequences uses braces
+    |
+501 -         log::info!("\u2705 Agent initialized and capabilities reported");
+501 +         log::info!("\u{2705} Agent initialized and capabilities reported");
+    |
+
+warning: unused import: `DateTime`
+  --> src\agent_core.rs:19:19
+   |
+19 | use chrono::{Utc, DateTime};
+   |                   ^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary parentheses around assigned value
+  --> src\gui.rs:77:52
+   |
+77 | ...                   let is_vmware_ip = (octets[0] == 192 && octets[1] == 168 && 
+   |                                          ^
+78 | ...                                      (octets[2] == 23 || octets[2] == 19));
+   |                                                                              ^
+   |
+   = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+   |
+77 ~                                 let is_vmware_ip = octets[0] == 192 && octets[1] == 168 && 
+78 ~                                                    (octets[2] == 23 || octets[2] == 19);
+   |
+
+warning: unused import: `core::fmt`
+ --> src\protection_modules\dto.rs:1:5
+  |
+1 | use core::fmt;
+  |     ^^^^^^^^^
+
+warning: unused import: `tokio::sync::RwLock`
+ --> src\protection_modules\file_protection\mod.rs:7:5
+  |
+7 | use tokio::sync::RwLock;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::protection_modules::file_protection::kernel::KernelEventBridge`
+  --> src\protection_modules\file_protection\mod.rs:14:5
+   |
+14 | use crate::protection_modules::file_protection::kernel::KernelEventBridge;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `HashSet`
+ --> src\protection_modules\file_protection\fs_index.rs:2:33
+  |
+2 | use std::collections::{HashMap, HashSet};
+  |                                 ^^^^^^^
+
+warning: unused import: `Path`
+ --> src\protection_modules\file_protection\filesystem_scanner.rs:5:17
+  |
+5 | use std::path::{Path, PathBuf};
+  |                 ^^^^
+
+warning: unused import: `super::path_normalizer::PathNormalizer`
+  --> src\protection_modules\file_protection\filesystem_scanner.rs:11:5
+   |
+11 | use super::path_normalizer::PathNormalizer;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `super::protocol::AdminRequest`
+ --> src\protection_modules\file_protection\comms\transport.rs:6:5
+  |
+6 | use super::protocol::AdminRequest;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `DriveInfo`, `ErrorCode`, `NodeInfo`, and `StatsInfo`
+ --> src\protection_modules\file_protection\comms\mod.rs:9:49
+  |
+9 | pub use protocol::{AdminRequest, AgentResponse, ErrorCode, DriveInfo, NodeInfo, StatsInfo};
+  |                                                 ^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `TransportServer`
+  --> src\protection_modules\file_protection\comms\mod.rs:11:21
+   |
+11 | pub use transport::{TransportServer, TransportConfig};
+   |                     ^^^^^^^^^^^^^^^
+
+warning: unused imports: `ExplorerStats` and `NodeUIState`
+ --> src\protection_modules\file_protection\ui\mod.rs:9:41
+  |
+9 | pub use explorer_state::{ExplorerState, NodeUIState, SelectionInfo, PendingProtection, ExplorerStats};
+  |                                         ^^^^^^^^^^^                                    ^^^^^^^^^^^^^
+
+warning: unused import: `interaction_rules::InteractionEngine`
+  --> src\protection_modules\file_protection\ui\mod.rs:10:9
+   |
+10 | pub use interaction_rules::InteractionEngine;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `KernelOperations`
+ --> src\protection_modules\file_protection\policy\kernel_adapter.rs:9:42
+  |
+9 | use super::kernel_policy::{KernelPolicy, KernelOperations};
+  |                                          ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ProtectionAction`, `ProtectionOperations`, and `ProtectionScope`
+ --> src\protection_modules\file_protection\policy\policy_engine.rs:7:42
+  |
+7 | use super::policy_intent::{PolicyIntent, ProtectionScope, ProtectionAction, ProtectionOperations};
+  |                                          ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ProtectionOperations`
+ --> src\protection_modules\file_protection\policy\policy_preview.rs:5:60
+  |
+5 | use super::policy_intent::{PolicyIntent, ProtectionAction, ProtectionOperations};
+  |                                                            ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `KernelPolicy` and `PolicyNormalizer`
+ --> src\protection_modules\file_protection\policy\policy_dry_run.rs:9:28
+  |
+9 | use super::kernel_policy::{KernelPolicy, PolicyNormalizer};
+  |                            ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `KernelOperations` and `KernelPolicy`
+  --> src\protection_modules\file_protection\policy\mod.rs:17:25
+   |
+17 | pub use kernel_policy::{KernelPolicy, PathMatchType, KernelOperations, PolicyNormalizer};
+   |                         ^^^^^^^^^^^^                 ^^^^^^^^^^^^^^^^
+
+warning: unused import: `FilePolicy`
+  --> src\protection_modules\file_protection\policy\mod.rs:18:41
+   |
+18 | pub use kernel_adapter::{KernelAdapter, FilePolicy};
+   |                                         ^^^^^^^^^^
+
+warning: unused imports: `ActivePolicy` and `PolicyStoreStats`
+  --> src\protection_modules\file_protection\policy\mod.rs:19:37
+   |
+19 | pub use policy_store::{PolicyStore, ActivePolicy, PolicyStoreStats};
+   |                                     ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: unused import: `PolicyEngineStats`
+  --> src\protection_modules\file_protection\policy\mod.rs:20:39
+   |
+20 | pub use policy_engine::{PolicyEngine, PolicyEngineStats};
+   |                                       ^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ApplyPolicyRequest`, `PolicyOperations`, `SearchQuery`, and `ServerState`
+ --> src\protection_modules\file_protection\networking\mod.rs:9:37
+  |
+9 | pub use agent_server::{AgentServer, ServerState, SearchQuery, ApplyPolicyRequest, PolicyOperations};
+  |                                     ^^^^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `EnforcementDecision`, `KernelOperation`, and `MockKernelEventGenerator`
+  --> src\protection_modules\file_protection\kernel\mod.rs:10:5
+   |
+10 |     KernelOperation, 
+   |     ^^^^^^^^^^^^^^^
+11 |     EnforcementDecision,
+   |     ^^^^^^^^^^^^^^^^^^^
+12 |     MockKernelEventGenerator
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ViolationUpdate`
+    --> src\protection_modules\security_monitor\monitor.rs:1808:5
+     |
+1808 |     ViolationUpdate,
+     |     ^^^^^^^^^^^^^^^
+
+warning: unused import: `Ordering`
+    --> src\protection_modules\security_monitor\monitor.rs:1822:38
+     |
+1822 | use std::sync::atomic::{ AtomicBool, Ordering };
+     |                                      ^^^^^^^^
+
+warning: unused imports: `AtomicBool` and `Ordering`
+   --> src\protection_modules\security_monitor\mod.rs:727:25
+    |
+727 | use std::sync::atomic::{AtomicBool, Ordering};
+    |                         ^^^^^^^^^^  ^^^^^^^^
+
+warning: unused imports: `UpdateData` and `UpdateType`
+   --> src\protection_modules\security_monitor\mod.rs:737:74
+    |
+737 | use crate::protection_modules::security_monitor::types::{RealtimeUpdate, UpdateData, UpdateType};
+    |                                                                          ^^^^^^^^^^  ^^^^^^^^^^
+
+warning: unused import: `debug`
+  --> src\protection_modules\app_tracker.rs:17:11
+   |
+17 | use log::{debug, info};
+   |           ^^^^^
+
+warning: use of deprecated function `whoami::hostname`: use `fallible::hostname()` instead
+   --> src\gui.rs:345:46
+    |
+345 |         println!("???  Hostname: {}", whoami::hostname());
+    |                                             ^^^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated function `whoami::hostname`: use `fallible::hostname()` instead
+   --> src\protection_modules\usb_protection.rs:630:17
+    |
+630 |         whoami::hostname()
+    |                 ^^^^^^^^
+
+warning: use of deprecated function `whoami::hostname`: use `fallible::hostname()` instead
+   --> src\protection_modules\usb_protection.rs:753:38
+    |
+753 |             "agentHostname": whoami::hostname(),
+    |                                      ^^^^^^^^
+
+warning: unused variable: `agent_username`
+   --> src\agent_core.rs:527:9
+    |
+527 |         agent_username: String
+    |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_agent_username`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `agent_id`
+   --> src\communication.rs:404:9
+    |
+404 |         agent_id: u64,
+    |         ^^^^^^^^
+    |
+help: if this is intentional, prefix it with an underscore
+    |
+404 |         _agent_id: u64,
+    |         +
+help: you might have meant to pattern match on the similarly named constant `MINIMUM_APP_TIME`
+    |
+404 -         agent_id: u64,
+404 +         protection_modules::app_tracker::MINIMUM_APP_TIME: u64,
+    |
+
+warning: unused variable: `status`
+   --> src\communication.rs:480:17
+    |
+480 |             let status = response.status();
+    |                 ^^^^^^ help: if this is intentional, prefix it with an underscore: `_status`
+
+warning: unused variable: `username`
+   --> src\communication.rs:510:9
+    |
+510 |         username: &str
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_username`
+
+warning: unused variable: `agent_id`
+   --> src\communication.rs:571:9
+    |
+571 |         agent_id: u64,
+    |         ^^^^^^^^
+    |
+help: if this is intentional, prefix it with an underscore
+    |
+571 |         _agent_id: u64,
+    |         +
+help: you might have meant to pattern match on the similarly named constant `MINIMUM_APP_TIME`
+    |
+571 -         agent_id: u64,
+571 +         protection_modules::app_tracker::MINIMUM_APP_TIME: u64,
+    |
+
+warning: unused variable: `hostname`
+    --> src\communication.rs:1139:9
+     |
+1139 |         hostname: Option<&str>,
+     |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_hostname`
+
+warning: unused variable: `policy_engine`
+   --> src\protection_modules\usb_protection.rs:341:9
+    |
+341 |         policy_engine: &PolicyEngine,
+    |         ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_policy_engine`
+
+warning: unused variable: `communicator`
+   --> src\protection_modules\usb_protection.rs:342:9
+    |
+342 |         communicator: &ServerCommunicator,
+    |         ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_communicator`
+
+warning: unused variable: `agent_id`
+   --> src\protection_modules\usb_protection.rs:343:9
+    |
+343 |         agent_id: u64,
+    |         ^^^^^^^^
+    |
+help: if this is intentional, prefix it with an underscore
+    |
+343 |         _agent_id: u64,
+    |         +
+help: you might have meant to pattern match on the similarly named constant `MINIMUM_APP_TIME`
+    |
+343 -         agent_id: u64,
+343 +         protection_modules::app_tracker::MINIMUM_APP_TIME: u64,
+    |
+
+warning: unused variable: `token`
+   --> src\protection_modules\usb_protection.rs:344:9
+    |
+344 |         token: &str
+    |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_token`
+
+warning: unused variable: `path`
+   --> src\protection_modules\usb_protection.rs:366:21
+    |
+366 |                 let path = Path::new(file_path);
+    |                     ^^^^ help: if this is intentional, prefix it with an underscore: `_path`
+
+warning: unused variable: `risk_summary`
+   --> src\protection_modules\usb_protection.rs:748:13
+    |
+748 |         let risk_summary = self.get_risk_summary(file_analysis);
+    |             ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_risk_summary`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\ui\interaction_rules.rs:119:51
+    |
+119 |             AgentResponse::Error { code, message, details } => {
+    |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\ui\interaction_rules.rs:162:51
+    |
+162 |             AgentResponse::Error { code, message, details } => {
+    |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `parent_id`
+   --> src\protection_modules\file_protection\ui\interaction_rules.rs:202:49
+    |
+202 |             AgentResponse::SearchLocalResults { parent_id, query, results, total_matches, scope } => {
+    |                                                 ^^^^^^^^^ help: try ignoring the field: `parent_id: _`
+
+warning: unused variable: `query`
+   --> src\protection_modules\file_protection\ui\interaction_rules.rs:202:60
+    |
+202 |             AgentResponse::SearchLocalResults { parent_id, query, results, total_matches, scope } => {
+    |                                                            ^^^^^ help: try ignoring the field: `query: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\ui\interaction_rules.rs:209:51
+    |
+209 |             AgentResponse::Error { code, message, details } => {
+    |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+  --> src\protection_modules\file_protection\ui\explorer_controller.rs:47:51
+   |
+47 |             AgentResponse::Error { code, message, details } => {
+   |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `parent_id`
+  --> src\protection_modules\file_protection\ui\explorer_controller.rs:86:39
+   |
+86 |             AgentResponse::Children { parent_id, parent_name, children, total_children } => {
+   |                                       ^^^^^^^^^ help: try ignoring the field: `parent_id: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\ui\explorer_controller.rs:102:51
+    |
+102 |             AgentResponse::Error { code, message, details } => {
+    |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\ui\explorer_controller.rs:135:51
+    |
+135 |             AgentResponse::Error { code, message, details } => {
+    |                                                   ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\networking\agent_server.rs:487:47
+    |
+487 |         AgentResponse::Error { code, message, details } => {
+    |                                               ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\networking\agent_server.rs:528:47
+    |
+528 |         AgentResponse::Error { code, message, details } => {
+    |                                               ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\networking\agent_server.rs:576:47
+    |
+576 |         AgentResponse::Error { code, message, details } => {
+    |                                               ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: unused variable: `details`
+   --> src\protection_modules\file_protection\networking\agent_server.rs:601:47
+    |
+601 |         AgentResponse::Error { code, message, details } => {
+    |                                               ^^^^^^^ help: try ignoring the field: `details: _`
+
+warning: variable does not need to be mutable
+   --> src\protection_modules\file_protection\networking\websocket_server.rs:100:13
+    |
+100 |         let mut handle = tokio::spawn(async move {
+    |             ----^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src\protection_modules\file_protection\networking\agent_server.rs:991:5
+    |
+991 |     mut request: axum::extract::Request,
+    |     ----^^^^^^^
+    |     |
+    |     help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> src\protection_modules\file_protection\networking\websocket_server.rs:224:9
+    |
+224 |     let mut handle = tokio::spawn(async move {
+    |         ----^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: unused variable: `threat_arrow`
+    --> src\protection_modules\security_monitor\monitor.rs:2314:17
+     |
+2314 |         let (_, threat_arrow, trend_color) = self.get_threat_trend_info();
+     |                 ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_threat_arrow`
+
+warning: unused variable: `trend_color`
+    --> src\protection_modules\security_monitor\monitor.rs:2314:31
+     |
+2314 |         let (_, threat_arrow, trend_color) = self.get_threat_trend_info();
+     |                               ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_trend_color`
+
+warning: unused variable: `screenshot_timestamp`
+    --> src\protection_modules\security_monitor\monitor.rs:2367:10
+     |
+2367 |          screenshot_timestamp: &DateTime<Utc>,  // For reference (maybe store in DB)
+     |          ^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_screenshot_timestamp`
+
+warning: unused variable: `token`
+    --> src\protection_modules\security_monitor\monitor.rs:2838:9
+     |
+2838 |         token: &str
+     |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_token`
+
+warning: unused variable: `comm_arc`
+    --> src\protection_modules\security_monitor\monitor.rs:2844:17
+     |
+2844 |             let comm_arc = self.communicator.clone();
+     |                 ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_comm_arc`
+
+warning: unused variable: `username`
+    --> src\protection_modules\security_monitor\mod.rs:1093:5
+     |
+1093 |     username: &str,
+     |     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_username`
+
+warning: unused variable: `threat_arrow`
+    --> src\protection_modules\security_monitor\mod.rs:1095:13
+     |
+1095 |     let (_, threat_arrow, trend_color) = monitor.get_threat_trend_info();
+     |             ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_threat_arrow`
+
+warning: unused variable: `trend_color`
+    --> src\protection_modules\security_monitor\mod.rs:1095:27
+     |
+1095 |     let (_, threat_arrow, trend_color) = monitor.get_threat_trend_info();
+     |                           ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_trend_color`
+
+warning: unused variable: `device`
+  --> src\protection_modules\usb_protection.rs:96:9
+   |
+96 |         device: &USBDeviceInfo
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_device`
+
+warning: unused variable: `drive_letter`
+  --> src\protection_modules\file_protection\nt_path_resolver.rs:37:13
+   |
+37 |         let drive_letter = if normalized.len() >= 2 && normalized.chars().nth(1) == Some(':') {
+   |             ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_drive_letter`
+
+warning: unused variable: `handle`
+   --> src\protection_modules\file_protection\mod.rs:179:17
+    |
+179 |     if let Some(handle) = self.server_handle.take() {
+    |                 ^^^^^^ help: if this is intentional, prefix it with an underscore: `_handle`
+
+warning: unused variable: `seen_in_this_screenshot`
+   --> src\protection_modules\security_monitor\rule_engine.rs:717:17
+    |
+717 |         let mut seen_in_this_screenshot: HashSet<String>  = HashSet::new();
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_seen_in_this_screenshot`
+
+warning: variable does not need to be mutable
+   --> src\protection_modules\security_monitor\rule_engine.rs:717:13
+    |
+717 |         let mut seen_in_this_screenshot: HashSet<String>  = HashSet::new();
+    |             ----^^^^^^^^^^^^^^^^^^^^^^^
+    |             |
+    |             help: remove this `mut`
+
+warning: unused variable: `cutoff`
+    --> src\protection_modules\security_monitor\monitor.rs:2247:75
+     |
+2247 |     fn apply_time_decay(&self, violations: &[&ViolationRecord], now: u64, cutoff: u64) -> f32 {
+     |                                                                           ^^^^^^
+     |
+help: if this is intentional, prefix it with an underscore
+     |
+2247 |     fn apply_time_decay(&self, violations: &[&ViolationRecord], now: u64, _cutoff: u64) -> f32 {
+     |                                                                           +
+help: you might have meant to pattern match on the similarly named constant `MINIMUM_APP_TIME`
+     |
+2247 -     fn apply_time_decay(&self, violations: &[&ViolationRecord], now: u64, cutoff: u64) -> f32 {
+2247 +     fn apply_time_decay(&self, violations: &[&ViolationRecord], now: u64, protection_modules::app_tracker::MINIMUM_APP_TIME: u64) -> f32 {
+     |
+
+warning: unused variable: `agent_id`
+  --> src\protection_modules\partial_access_manager.rs:76:13
+   |
+76 |         let agent_id = self.agent_id;
+   |             ^^^^^^^^
+   |
+help: if this is intentional, prefix it with an underscore
+   |
+76 |         let _agent_id = self.agent_id;
+   |             +
+help: you might have meant to pattern match on the similarly named constant `MINIMUM_APP_TIME`
+   |
+76 -         let agent_id = self.agent_id;
+76 +         let protection_modules::app_tracker::MINIMUM_APP_TIME = self.agent_id;
+   |
+
+warning: `dlp-agent` (lib) generated 74 warnings
+error: could not compile `dlp-agent` (lib) due to 4 previous errors; 74 warnings emitted

@@ -1,0 +1,50 @@
+; dlp-filter-driver.inf
+; This file is used to install the DLP filter driver.
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = "ActivityMonitor"
+ClassGuid   = {b86dff51-a31e-4bac-b3cf-e8cfe75c9fc2}
+Provider    = "MyDLP"
+DriverVer   = 11/07/2025,1.0.0.0
+CatalogFile = dlp-filter-driver.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; \Drivers
+
+[DefaultInstall]
+OptionDesc = "DLP File Filter Driver"
+CopyFiles  = "Dlp.DriverFiles"
+
+[DefaultInstall.Services]
+AddService = "dlp-filter-driver" , , "Dlp.Service"
+
+[DefaultUninstall]
+DelFiles   = "Dlp.DriverFiles"
+DelReg     = "Dlp.DelRegistry"
+
+[DefaultUninstall.Services]
+DelService = "dlp-filter-driver" , 0x200 ; SPSVCINST_STOPSERVICE
+
+[Dlp.DriverFiles]
+dlp-filter-driver.sys
+
+[Dlp.Service]
+DisplayName    = "DLP File Filter Driver"
+Description    = "Monitors and blocks file system operations for DLP."
+ServiceType    = 2 ; SERVICE_FILE_SYSTEM_DRIVER
+StartType      = 0 ; SERVICE_BOOT_START (Starts with Windows)
+ErrorControl   = 1 ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = "FSFilter Activity Monitor"
+AddReg         = "Dlp.AddRegistry"
+
+[Dlp.AddRegistry]
+HKR, "Instances", "DefaultInstance", 0x00000000, "Dlp-Filter-Instance"
+; This Altitude is for a high-priority security filter
+HKR, "Instances\Dlp-Filter-Instance", "Altitude", 0x00000000, "370010"
+
+[Dlp.DelRegistry]
+HKR, "Instances"
+
+[Strings]
+; Add any necessary strings here

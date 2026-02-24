@@ -1,0 +1,8 @@
+cargo:rustc-link-arg=/DRIVER
+cargo:rustc-link-arg=/SUBSYSTEM:NATIVE
+cargo:rustc-link-arg=/NODEFAULTLIB
+cargo:rustc-link-arg=/ENTRY:DriverEntry
+cargo:rustc-link-arg=/DYNAMICBASE
+cargo:rustc-link-arg=/NXCOMPAT
+cargo:rustc-link-lib=FltMgr
+cargo:rustc-link-search=native=D:\cursor\dlp-agent-main\dlp-filter-driver\target\release

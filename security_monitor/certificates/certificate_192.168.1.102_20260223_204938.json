@@ -1,0 +1,33 @@
+{
+  "certificate_id": "THREAT_CERT_20260223_204938",
+  "user_device": "192.168.1.102",
+  "user_mac": "BC:EC:A0:15:E9:9A",
+  "assessment_time": "2026-02-23T20:49:38.386021+00:00",
+  "assessment_method": "NLP-Enhanced Rule-based",
+  "llm_available": false,
+  "threat_score": 0.0,
+  "threat_level": "LOW_THREAT",
+  "risk_analysis": "Minor security lapses requiring basic awareness in TECHNICAL context",
+  "behavior_insights": "User demonstrates good security hygiene in TECHNICAL context",
+  "immediate_actions": [
+    "Provide TECHNICAL security awareness guidance"
+  ],
+  "training_recommendations": [
+    "Secure development practices"
+  ],
+  "total_violations": 0,
+  "unique_rule_types": 0,
+  "rule_breakdown": {},
+  "color_code": "blue",
+  "emoji": "🔵",
+  "context_analysis": {
+    "primary_context": "TECHNICAL",
+    "risk_factors": [
+      "Heavy technical content"
+    ],
+    "behavioral_patterns": [
+      "Established context patterns"
+    ],
+    "confidence_score": 1.0
+  }
+}

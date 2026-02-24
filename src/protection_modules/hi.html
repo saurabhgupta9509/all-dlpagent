@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLP Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Login Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-error {
+            color: #e74c3c;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 6px;
+            display: none;
+        }
+
+        /* Dashboard Styles */
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            margin: 0 5px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 2px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-info {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .notification-badge {
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Policy Wizard Styles */
+        .wizard-container {
+            margin-top: 20px;
+        }
+
+        .wizard-step {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .protection-category {
+            margin-bottom: 30px;
+        }
+
+        .policies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .policy-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .policy-card.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .policy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .policy-header h5 {
+            margin: 0;
+            color: #333;
+        }
+
+        .severity-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .severity-badge.high {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .severity-badge.medium {
+            background: #f39c12;
+            color: white;
+        }
+
+        .severity-badge.low {
+            background: #27ae60;
+            color: white;
+        }
+
+        .policy-action {
+            margin-top: 10px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Alert Styles */
+        .alert-item {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .alert-item.critical {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-item.high {
+            background: #fce4d6;
+            border-color: #f8d7c9;
+        }
+
+        .alert-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Agent Selector */
+        .agent-selector {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .agent-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agent-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agent-name {
+            font-weight: 600;
+        }
+
+        .agent-status {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .status-active {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .status-inactive {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .toast {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideInRight 0.3s ease;
+            max-width: 350px;
+        }
+
+        .toast-success {
+            background: #27ae60;
+        }
+
+        .toast-error {
+            background: #e74c3c;
+        }
+
+        .toast-warning {
+            background: #f39c12;
+        }
+
+        .toast-info {
+            background: #3498db;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .policies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-wrap: wrap;
+            }
+
+            .wizard-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .wizard-navigation button {
+                width: 100%;
+            }
+        }
+
+        /* Error states */
+        .error-state {
+            text-align: center;
+            padding: 40px;
+            color: #e74c3c;
+        }
+
+        .error-state p {
+            margin-bottom: 15px;
+        }
+
+        /* Empty states */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .empty-state p {
+            margin-bottom: 15px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn-loading .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Login Screen -->
+<div id="loginScreen">
+    <div class="login-container">
+        <h2>🔐 DLP Admin Login</h2>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter username" value="admin">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter password" value="admin123">
+        </div>
+        <button class="btn-login" id="loginBtn" onclick="adminLogin()">Login to Dashboard</button>
+        <div id="loginError" class="login-error"></div>
+
+        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 12px; color: #666;">
+            <strong>Default Credentials:</strong><br>
+            Username: <code>admin</code><br>
+            Password: <code>admin123</code>
+        </div>
+    </div>
+</div>
+
+<!-- Main Dashboard -->
+<div id="dashboard" class="hidden">
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ DLP Admin Dashboard</h1>
+            <div>
+                <span id="adminName">Welcome, Admin</span>
+                <button class="btn btn-danger" onclick="logout()" style="margin-left: 15px;">Logout</button>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('overview')">📊 Overview</button>
+            <button class="nav-tab" onclick="showTab('agents')">👥 Agents</button>
+            <button class="nav-tab" onclick="showTab('policies')">📜 Protection Policies</button>
+            <button class="nav-tab" onclick="showTab('alerts')">
+                🚨 Alerts <span id="alertBadge" class="notification-badge hidden">0</span>
+            </button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalAgents">0</div>
+                    <div class="stat-label">Total Agents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeAgents">0</div>
+                    <div class="stat-label">Active Agents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPolicies">0</div>
+                    <div class="stat-label">Active Policies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingAlerts">0</div>
+                    <div class="stat-label">Pending Alerts</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📈 Recent Activity</h3>
+                <div id="recentActivity">
+                    <div class="loading">Loading recent activity...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agents Tab -->
+        <div id="agents" class="tab-content">
+            <div class="card">
+                <h3>👥 Manage Agents</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="loadAgents()">🔄 Refresh</button>
+                    <button class="btn btn-success" onclick="createTestAgent()">🧪 Create Test Agent</button>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hostname</th>
+                        <th>Status</th>
+                        <th>Last Heartbeat</th>
+                        <th>Policies</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="agentsTable">
+                    <tr><td colspan="6" class="loading">Loading agents...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="agentDetailsCard" class="card hidden">
+                <h3 id="agentDetailsHeader">Agent Details</h3>
+                <div id="agentDetailsContent">
+                </div>
+            </div>
+        </div>
+
+        <!-- Policies Tab -->
+        <div id="policies" class="tab-content">
+            <!-- Policy Assignment Wizard -->
+            <div class="card">
+                <h3>🛡️ DLP Protection Assignment</h3>
+                <p>Select pre-built protection policies and assign to agents</p>
+
+                <div class="wizard-container">
+                    <!-- Step 1: Select Protection Type -->
+                    <div id="wizardStep1" class="wizard-step active">
+                        <h4>Step 1: Select Protection Category</h4>
+                        <div class="form-group">
+                            <label>Choose protection type:</label>
+                            <select id="protectionCategory" class="form-control" onchange="loadProtectionPolicies()">
+                                <option value="">Select Category</option>
+                                <option value="USB">💾 USB Protection</option>
+                                <option value="NETWORK">🌐 Network Protection</option>
+                                <option value="FILE">📁 File Protection</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Select Specific Policy -->
+                    <div id="wizardStep2" class="wizard-step">
+                        <h4>Step 2: Select Protection Policy</h4>
+                        <div class="form-group">
+                            <label>Choose specific policy:</label>
+                            <div id="policiesContainer">
+                                <div class="loading">Select a category first...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Select Agents -->
+                    <div id="wizardStep3" class="wizard-step">
+                        <h4>Step 3: Select Agents</h4>
+                        <div class="form-group">
+                            <label>Choose which agents to protect:</label>
+                            <div id="agentsCheckboxList" class="agent-selector">
+                                <div class="loading">Loading agents...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="wizard-navigation">
+                        <button class="btn btn-warning" onclick="previousWizardStep()" id="prevBtn" style="display: none;">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextWizardStep()" id="nextBtn">Next →</button>
+                        <button class="btn btn-success" onclick="assignProtectionPolicy()" id="applyBtn" style="display: none;">✅ Assign Protection</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Policies -->
+            <div class="card">
+                <h3>📋 Active Policy Assignments</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="loadActivePoliciesTable()">🔄 Refresh</button>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Protection Type</th>
+                        <th>Policy</th>
+                        <th>Action</th>
+                        <th>Severity</th>
+                        <th>Assigned</th>
+                    </tr>
+                    </thead>
+                    <tbody id="activePoliciesTable">
+                    <tr><td colspan="6" class="loading">Loading active policies...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Alerts Tab -->
+        <div id="alerts" class="tab-content">
+            <div class="card">
+                <h3>🚨 Security Alerts Dashboard</h3>
+
+                <!-- Alert Statistics -->
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-bottom: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalAlerts">0</div>
+                        <div class="stat-label">Total Alerts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="usbAlerts">0</div>
+                        <div class="stat-label">USB Alerts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="pendingAlertsCount">0</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="criticalAlerts">0</div>
+                        <div class="stat-label">Critical</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Controls -->
+            <div class="alert-filters">
+                <button class="filter-btn active" onclick="filterAlerts('ALL')">All Alerts</button>
+                <button class="filter-btn" onclick="filterAlerts('USB')">💾 USB</button>
+                <button class="filter-btn" onclick="filterAlerts('FILE')">📁 File</button>
+                <button class="filter-btn" onclick="filterAlerts('NETWORK')">🌐 Network</button>
+                <button class="filter-btn" onclick="filterAlerts('PENDING')">⏳ Pending</button>
+                <button class="filter-btn" onclick="filterAlerts('CRITICAL')">🔴 Critical</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="loadAlerts()">🔄 Refresh Alerts</button>
+                <button class="btn btn-success" onclick="createTestUSBAlert()">🧪 Test USB Alert</button>
+                <button class="btn btn-warning" onclick="debugAlerts()">🐛 Debug</button>
+            </div>
+
+            <!-- Alerts Container -->
+            <div id="alertsContainer" style="margin-top: 20px;">
+                <div id="alertsList">
+                    <div class="loading">Loading alerts...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer" class="toast-container"></div>
+
+<script>
+    // Global variables
+    let currentUser = null;
+    let currentWizardStep = 1;
+    let selectedPolicyId = null;
+    let selectedAgents = [];
+    let allAlerts = [];
+    let currentAlertFilter = 'ALL';
+    let refreshInterval;
+    let agentsCache = [];
+
+    // API Helper Function
+    async function callApi(path, options = {}) {
+        const opts = {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                ...(options.headers || {})
+            },
+            ...options
+        };
+
+        try {
+            const res = await fetch(path, opts);
+            const text = await res.text().catch(() => '');
+
+            // Handle empty responses
+            if (!text || text.trim().length === 0) {
+                if (!res.ok) {
+                    throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                }
+                return null;
+            }
+
+            // Try to parse JSON
+            let json;
+            try {
+                json = JSON.parse(text);
+            } catch (err) {
+                throw new Error(`Invalid JSON response: ${err.message}`);
+            }
+
+            // Handle HTTP errors
+            if (!res.ok) {
+                const msg = (json && json.message) ? json.message : res.statusText;
+                throw new Error(`HTTP ${res.status}: ${msg}`);
+            }
+
+            return json;
+        } catch (error) {
+            console.error(`API call failed: ${path}`, error);
+            throw error;
+        }
+    }
+
+    // Toast Notification System
+    function showToast(message, type = 'info', duration = 5000) {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+
+        container.appendChild(toast);
+
+        // Auto remove after duration
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, duration);
+
+        return toast;
+    }
+
+    // Authentication Functions
+    async function checkAuthStatus() {
+        try {
+            const result = await callApi('/api/auth/check', { method: 'GET' });
+            if (result && result.success) {
+                currentUser = result.data;
+                showDashboard();
+                await loadDashboardData();
+            } else {
+                showLogin();
+            }
+        } catch (error) {
+            console.warn('Auth check failed:', error.message);
+            showLogin();
+        }
+    }
+
+    async function adminLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('loginError');
+        const loginBtn = document.getElementById('loginBtn');
+
+        errorDiv.style.display = 'none';
+        errorDiv.textContent = '';
+
+        if (!username || !password) {
+            showError('Please enter both username and password');
+            return;
+        }
+
+        // Show loading state
+        loginBtn.classList.add('btn-loading');
+        loginBtn.disabled = true;
+
+        try {
+            const result = await callApi('/api/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ username, password })
+            });
+
+            if (result && result.success) {
+                currentUser = result.data;
+                showDashboard();
+                await loadDashboardData();
+                showToast('Login successful!', 'success');
+            } else {
+                showError(result?.message || 'Login failed');
+            }
+        } catch (error) {
+            showError(error.message || 'Network error');
+        } finally {
+            // Restore button state
+            loginBtn.classList.remove('btn-loading');
+            loginBtn.disabled = false;
+        }
+    }
+
+    async function logout() {
+        try {
+            await callApi('/api/auth/logout', { method: 'POST' });
+        } catch (error) {
+            console.warn('Logout error:', error.message);
+        } finally {
+            currentUser = null;
+            showLogin();
+            showToast('Logged out successfully', 'info');
+        }
+    }
+
+    function showDashboard() {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+
+        if (currentUser) {
+            document.getElementById('adminName').textContent = `Welcome, ${currentUser.username}`;
+        }
+        startAutoRefresh();
+    }
+
+    function showLogin() {
+        document.getElementById('dashboard').classList.add('hidden');
+        document.getElementById('loginScreen').classList.remove('hidden');
+        stopAutoRefresh();
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('loginError');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+
+    // Tab Management
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+
+        document.getElementById(tabName).classList.add('active');
+        document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+
+        switch(tabName) {
+            case 'overview':
+                loadOverviewStats();
+                break;
+            case 'agents':
+                loadAgents();
+                break;
+            case 'policies':
+                loadProtectionPolicies();
+                loadAgentsForWizard();
+                loadActivePoliciesTable();
+                break;
+            case 'alerts':
+                loadAlerts();
+                break;
+        }
+    }
+
+    // Dashboard Data Loading
+    async function loadDashboardData() {
+        try {
+            await Promise.all([
+                loadAgents(),
+                loadAlerts()
+            ]);
+           await loadOverviewStats();
+        } catch (err) {
+            console.warn('Failed to load some dashboard data:', err.message);
+        }
+    }
+
+    async function loadOverviewStats() {
+        try {
+            const [agentsResult, alertsResult] = await Promise.all([
+                callApi('/api/admin/agents', { method: 'GET' }).catch(err => {
+                    console.warn('agents API failed:', err.message);
+                    return null;
+                }),
+                callApi('/api/admin/alerts/pending', { method: 'GET' }).catch(err => {
+                    console.warn('alerts API failed:', err.message);
+                    return null;
+                })
+            ]);
+
+            // Determine agents array
+            let agents = [];
+            if (agentsResult && agentsResult.success && Array.isArray(agentsResult.data)) {
+                agents = agentsResult.data;
+                agentsCache = agents;
+            } else if (agentsCache && Array.isArray(agentsCache) && agentsCache.length > 0) {
+                console.warn('Using cached agents for overview because API returned no data');
+                agents = agentsCache;
+            } else {
+                console.warn('No agents available for overview (API and cache empty)');
+                agents = [];
+            }
+
+            // Alerts array
+            let alerts = [];
+            if (alertsResult && alertsResult.success && Array.isArray(alertsResult.data)) {
+                alerts = alertsResult.data;
+            } else {
+                console.warn('No alerts data from API; using empty list');
+                alerts = [];
+            }
+
+            // Compute summary numbers
+            const totalAgents = agents.length;
+            const activeAgents = agents.filter(a => (a.status || '').toUpperCase() === 'ACTIVE').length;
+            const totalPolicies = agents.reduce((sum, a) => sum + (a.policyCount || 0), 0);
+            const pendingAlerts = alerts.length;
+
+            // Update DOM
+            document.getElementById('totalAgents').textContent = totalAgents;
+            document.getElementById('activeAgents').textContent = activeAgents;
+            document.getElementById('totalPolicies').textContent = totalPolicies;
+            document.getElementById('pendingAlerts').textContent = pendingAlerts;
+
+        } catch (err) {
+            console.error('loadOverviewStats error:', err);
+            document.getElementById('totalAgents').textContent = 0;
+            document.getElementById('activeAgents').textContent = 0;
+            document.getElementById('totalPolicies').textContent = 0;
+            document.getElementById('pendingAlerts').textContent = 0;
+        }
+    }
+
+    async function loadAgents() {
+        try {
+            const result = await callApi('/api/admin/agents', { method: 'GET' });
+            const tbody = document.getElementById('agentsTable');
+
+            if (!result || !result.success) {
+                tbody.innerHTML = `<tr><td colspan="6" class="error-state">Error: ${result?.message || 'Failed to load agents'}</td></tr>`;
+                agentsCache = [];
+                return;
+            }
+
+            const agents = (result && result.success) ? result.data : [];
+            agentsCache = agents;
+
+            if (agents.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No agents found</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = agents.map(agent => `
+                <tr>
+                    <td>${agent.id}</td>
+                    <td><a href="#" onclick="event.preventDefault(); showAgentDetails(${agent.id}, '${agent.hostname}');">${agent.hostname || agent.username}</a></td>
+                    <td><span class="status-${(agent.status||'').toLowerCase()}">${agent.status}</span></td>
+                    <td>${agent.lastHeartbeat ? new Date(agent.lastHeartbeat).toLocaleString() : 'Never'}</td>
+                    <td>${agent.activePolicyCount || 0} / ${agent.capabilityCount || 0}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="openPolicyModal(${agent.id}, '${agent.hostname || ''}')">View Policies</button>
+<!--                        <button class="btn btn-info btn-sm" onclick="showAgentDetails(${agent.id}, '${agent.hostname}')">View Policies</button>-->
+                        <button class="btn btn-warning btn-sm" onclick="updateAgentStatus(${agent.id}, '${agent.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE'}')">
+                            ${agent.status === 'ACTIVE' ? 'Deactivate' : 'Activate'}
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteAgent(${agent.id})">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        } catch (error) {
+            console.error("❌ Error loading agents:", error.message);
+            document.getElementById('agentsTable').innerHTML = `<tr><td colspan="6" class="error-state">Failed to load agents: ${error.message}</td></tr>`;
+            agentsCache = [];
+        }
+    }
+
+    async function showAgentDetails(agentId, hostname) {
+        const detailsCard = document.getElementById('agentDetailsCard');
+        const header = document.getElementById('agentDetailsHeader');
+        const content = document.getElementById('agentDetailsContent');
+
+        header.textContent = `📜 Policies for Agent: ${hostname} (ID: ${agentId})`;
+        detailsCard.classList.remove('hidden');
+        content.innerHTML = '<div class="loading">Loading policies...</div>';
+
+        try {
+            const result = await callApi(`/api/admin/agents/${agentId}/capabilities`);
+            if (result && result.success) {
+                let html = '';
+                for (const category in result.data) {
+                    html += `<h4>${category} Protection</h4>`;
+                    html += '<div class="policies-grid">';
+                    result.data[category].forEach(policy => {
+                        const statusClass = policy.isActive ? 'status-active' : 'status-inactive';
+                        const statusText = policy.isActive ? 'ACTIVE' : 'INACTIVE';
+                        html += `
+                            <div class="policy-card ${policy.isActive ? 'selected' : ''}">
+                                <h5>${policy.name}</h5>
+                                <p>${policy.description}</p>
+                                <div class="policy-action">
+                                    <strong>Status: <span class="${statusClass}">${statusText}</span></strong>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                content.innerHTML = html;
+            } else {
+                content.innerHTML = `<p class="error-state">Error: ${result?.message || 'Failed to load policies'}</p>`;
+            }
+        } catch (error) {
+            content.innerHTML = `<p class="error-state">Error loading policy details: ${error.message}</p>`;
+        }
+    }
+
+    async function updateAgentStatus(agentId, newStatus) {
+        if (!confirm(`Are you sure you want to ${newStatus === 'ACTIVE' ? 'activate' : 'deactivate'} this agent?`)) return;
+
+        try {
+            const result = await callApi(`/api/admin/agents/${agentId}/status?status=${newStatus}`, { method: 'PUT' });
+            if (result && result.success) {
+                await loadAgents();
+                await loadOverviewStats();
+                showToast(`Agent ${newStatus === 'ACTIVE' ? 'activated' : 'deactivated'} successfully`, 'success');
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed to update agent'), 'error');
+            }
+        } catch (error) {
+            showToast('Error updating agent: ' + error.message, 'error');
+        }
+    }
+
+    async function openPolicyModal(agentId, hostname) {
+        const modal = document.getElementById('policyModal');
+        const title = document.getElementById('modalAgentName');
+        const content = document.getElementById('modalPolicyList');
+        title.textContent = `Policies for: ${hostname}`;
+        modal.classList.remove('hidden');
+        content.innerHTML = '<div class="loading">Loading...</div>';
+
+        try {
+            const result = await callApi(`/api/admin/agents/${agentId}/capabilities`);
+            if (result && result.success) {
+                const categories = result.data || {};
+                content.innerHTML = Object.keys(categories).length > 0 ? Object.entries(categories).map(([category, policies]) => `
+                    <div style="margin-bottom: 20px;">
+                        <h4>${category}</h4>
+                        ${policies.map(p => {
+                            const btnClass = p.isActive ? 'btn-warning' : 'btn-success';
+                            const btnText = p.isActive ? 'Deactivate' : 'Activate';
+                            return `
+                            <div class="policy-card ${p.isActive ? 'selected' : ''}">
+                                <h5>${p.name}</h5>
+                                <div class="policy-action" style="display:flex; justify-content:space-between; align-items:center;">
+                                    <strong>Status: <span class="${p.isActive ? 'status-active' : 'status-inactive'}">${p.isActive ? 'ACTIVE' : 'INACTIVE'}</span></strong>
+                                    <button class="btn ${btnClass} btn-sm" onclick="togglePolicy(${agentId}, '${p.capabilityCode}', ${p.isActive}, '${hostname}')">${btnText}</button>
+                                </div>
+                            </div>`;
+                        }).join('')}
+                    </div>`).join('') : '<p>Agent has not reported capabilities.</p>';
+            }
+        } catch (error) {
+            content.innerHTML = `<p style="color: red;">${error.message}</p>`;
+        }
+    }
+
+    async function togglePolicy(agentId, policyCode, isCurrentlyActive, hostname) {
+        const endpoint = isCurrentlyActive ? '/api/admin/deactivate-protection' : '/api/admin/assign-protection';
+        const actionText = isCurrentlyActive ? 'deactivate' : 'activate';
+        if (!confirm(`Are you sure you want to ${actionText} "${policyCode}"?`)) return;
+
+        try {
+            await callApi(endpoint, { method: 'POST', body: JSON.stringify({ policyCode, agentIds: [agentId] }) });
+            showToast(`Policy ${actionText}d successfully!`, 'success');
+            openPolicyModal(agentId, hostname); // Refresh modal
+            loadAgents(); // Refresh agent list to update counts
+        } catch (error) {
+            showToast(`Error: ${error.message}`, 'error');
+        }
+    }
+
+    async function deleteAgent(agentId) {
+        if (!confirm('Are you sure you want to delete this agent? This action cannot be undone.')) return;
+
+        try {
+            const result = await callApi(`/api/admin/agents/${agentId}`, { method: 'DELETE' });
+            if (result && result.success) {
+                await loadAgents();
+                await loadOverviewStats();
+                showToast('Agent deleted successfully', 'success');
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed to delete agent'), 'error');
+            }
+        } catch (error) {
+            showToast('Error deleting agent: ' + error.message, 'error');
+        }
+    }
+
+    // Policy Management
+    function selectPolicy(policyCode, element) {
+        selectedPolicyId = policyCode;
+
+        // Remove selected class from all policy cards
+        document.querySelectorAll('.policy-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // Add selected class to clicked card
+        element.classList.add('selected');
+    }
+
+    async function loadProtectionPolicies() {
+        const category = document.getElementById('protectionCategory').value;
+        if (!category) return;
+
+        try {
+            const result = await callApi('/api/admin/protection-policies', { method: 'GET' });
+          // const policies = (result?.data[category] || []);-->
+            const container = document.getElementById('policiesContainer');
+
+            if (!result || !result.success) {
+                container.innerHTML = `<div class="error-state">Error loading policies: ${result?.message || 'Unknown'}</div>`;
+                return;
+            }
+
+            const policies = result.data[category] || [];
+            if (policies.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>❌ No policies available for this category</p>
+                        <p style="font-size: 12px; margin-top: 10px;">Check if pre-built policies were created in backend</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = policies.map(policy => `
+                <div class="policy-card" onclick="selectPolicy('${policy.policyCode}', this)">
+                    <div class="policy-header">
+                        <h5>${policy.name}</h5>
+                        <span class="severity-badge ${policy.severity.toLowerCase()}">${policy.severity}</span>
+                    </div>
+                    <p>${policy.description}</p>
+                    <div class="policy-action"><strong>Action:</strong> ${policy.action} | <strong>Target:</strong> ${policy.target}</div>
+                    <div style="margin-top:8px; font-size:0.8em; color:#666;">Code: ${policy.policyCode} | Type: ${policy.policyType}</div>
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Error loading protection policies:', error.message);
+            document.getElementById('policiesContainer').innerHTML = `<div class="error-state">Error: ${error.message}</div>`;
+        }
+    }
+
+    async function loadAgentsForWizard() {
+        try {
+            const result = await callApi('/api/admin/agents', { method: 'GET' });
+            if (!result || !result.success) return;
+
+            const container = document.getElementById('agentsCheckboxList');
+            container.innerHTML = result.data.map(agent => `
+                <div class="agent-card">
+                    <div class="agent-info">
+                        <div class="agent-name">${agent.hostname || agent.username}</div>
+                        <div class="agent-status">ID: ${agent.id} | Status: ${agent.status}</div>
+                    </div>
+                    <input type="checkbox" id="agent-${agent.id}" value="${agent.id}" onchange="updateSelectedAgents(${agent.id})">
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Error loading agents for wizard:', error.message);
+            document.getElementById('agentsCheckboxList').innerHTML = `<div class="error-state">Error: ${error.message}</div>`;
+        }
+    }
+
+    function updateSelectedAgents(agentId) {
+        const checkbox = document.getElementById(`agent-${agentId}`);
+        if (checkbox.checked) {
+            selectedAgents.push(agentId);
+        } else {
+            selectedAgents = selectedAgents.filter(id => id !== agentId);
+        }
+    }
+
+    // Wizard Navigation
+    function nextWizardStep() {
+        if (currentWizardStep === 1) {
+            const category = document.getElementById('protectionCategory').value;
+            if (!category) {
+                showToast('Please select a protection category', 'warning');
+                return;
+            }
+        } else if (currentWizardStep === 2) {
+            if (!selectedPolicyId) {
+                showToast('Please select a protection policy', 'warning');
+                return;
+            }
+        } else if (currentWizardStep === 3) {
+            if (selectedAgents.length === 0) {
+                showToast('Please select at least one agent', 'warning');
+                return;
+            }
+        }
+
+        document.getElementById(`wizardStep${currentWizardStep}`).classList.remove('active');
+        currentWizardStep++;
+        document.getElementById(`wizardStep${currentWizardStep}`).classList.add('active');
+        updateWizardNavigation();
+    }
+
+    function previousWizardStep() {
+        document.getElementById(`wizardStep${currentWizardStep}`).classList.remove('active');
+        currentWizardStep--;
+        document.getElementById(`wizardStep${currentWizardStep}`).classList.add('active');
+        updateWizardNavigation();
+    }
+
+    function updateWizardNavigation() {
+        document.getElementById('prevBtn').style.display = currentWizardStep > 1 ? 'block' : 'none';
+        document.getElementById('nextBtn').style.display = currentWizardStep < 3 ? 'block' : 'none';
+        document.getElementById('applyBtn').style.display = currentWizardStep === 3 ? 'block' : 'none';
+    }
+
+    async function assignProtectionPolicy() {
+        if (selectedAgents.length === 0) {
+            showToast('Please select at least one agent', 'warning');
+            return;
+        }
+        if (!selectedPolicyId) {
+            showToast('Please select a protection policy', 'warning');
+            return;
+        }
+
+        try {
+            const body = { policyCode: selectedPolicyId, agentIds: selectedAgents };
+            const result = await callApi('/api/admin/assign-protection', {
+                method: 'POST',
+                body: JSON.stringify(body)
+            });
+
+            if (result && result.success) {
+                showToast(`Protection policy assigned to ${selectedAgents.length} agents!`, 'success');
+                resetWizard();
+                await loadActivePoliciesTable();
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed to assign policy'), 'error');
+            }
+        } catch (error) {
+            showToast('Error assigning protection: ' + error.message, 'error');
+        }
+    }
+
+    function resetWizard() {
+        currentWizardStep = 1;
+        selectedPolicyId = null;
+        selectedAgents = [];
+
+        document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
+        document.getElementById('wizardStep1').classList.add('active');
+        document.getElementById('protectionCategory').value = '';
+        document.getElementById('policiesContainer').innerHTML = '<div class="loading">Select a category first...</div>';
+        document.getElementById('agentsCheckboxList').innerHTML = '<div class="loading">Loading agents...</div>';
+
+        updateWizardNavigation();
+    }
+
+    // Alerts Management
+    async function loadAlerts() {
+        try {
+            const result = await callApi('/api/admin/alerts/pending', { method: 'GET' });
+
+            if (!result || !result.success) {
+                showAlertError(result?.message || 'Failed to load alerts');
+                return;
+            }
+
+            allAlerts = result.data || [];
+            updateAlertStatistics();
+            displayFilteredAlerts();
+
+            const badge = document.getElementById('alertBadge');
+            const pendingCount = allAlerts.filter(a => a.status === 'PENDING').length;
+            badge.textContent = pendingCount;
+            pendingCount > 0 ? badge.classList.remove('hidden') : badge.classList.add('hidden');
+
+        } catch (error) {
+            console.error('❌ Error loading alerts:', error.message);
+            showAlertError('Failed to load alerts: ' + error.message);
+        }
+    }
+
+    function showAlertError(message) {
+        const container = document.getElementById('alertsList');
+        container.innerHTML = `
+            <div class="error-state">
+                <p>❌ Error loading alerts</p>
+                <p style="font-size: 0.9em;">${message}</p>
+                <button class="btn btn-primary" onclick="loadAlerts()" style="margin-top: 10px;">
+                    Try Again
+                </button>
+            </div>
+        `;
+    }
+
+    function updateAlertStatistics() {
+        const totalAlerts = allAlerts.length;
+        const usbAlerts = allAlerts.filter(a => a.alertType && a.alertType.includes('USB')).length;
+        const pendingAlerts = allAlerts.filter(a => a.status === 'PENDING').length;
+        const criticalAlerts = allAlerts.filter(a => a.severity === 'CRITICAL' || a.severity === 'HIGH').length;
+
+        document.getElementById('totalAlerts').textContent = totalAlerts;
+        document.getElementById('usbAlerts').textContent = usbAlerts;
+        document.getElementById('pendingAlertsCount').textContent = pendingAlerts;
+        document.getElementById('criticalAlerts').textContent = criticalAlerts;
+    }
+
+    function displayFilteredAlerts() {
+        const container = document.getElementById('alertsList');
+
+        if (allAlerts.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <p style="font-size: 1.2em;">📭 No alerts found</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">
+                        USB insertion alerts from agents will appear here automatically
+                    </p>
+                    <button class="btn btn-primary" onclick="createTestUSBAlert()" style="margin-top: 15px;">
+                        Create Test USB Alert
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        const filteredAlerts = filterAlertsByType(allAlerts, currentAlertFilter);
+
+        if (filteredAlerts.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    No alerts match the current filter
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filteredAlerts.map(alert => renderAlertCard(alert)).join('');
+    }
+
+    function filterAlertsByType(alerts, filter) {
+        switch (filter) {
+            case 'USB':
+                return alerts.filter(a => a.alertType && a.alertType.includes('USB'));
+            case 'FILE':
+                return alerts.filter(a => a.alertType && a.alertType.includes('FILE'));
+            case 'NETWORK':
+                return alerts.filter(a => a.alertType && a.alertType.includes('NETWORK'));
+            case 'PENDING':
+                return alerts.filter(a => a.status === 'PENDING');
+            case 'CRITICAL':
+                return alerts.filter(a => a.severity === 'CRITICAL' || a.severity === 'HIGH');
+            default:
+                return alerts;
+        }
+    }
+
+    function renderAlertCard(alert) {
+        const severity = alert.severity || 'MEDIUM';
+        const severityClass = severity.toLowerCase();
+        const isUSB = alert.alertType && alert.alertType.includes('USB');
+        const isPending = alert.status === 'PENDING';
+
+        let alertClass = `alert-item ${severityClass}`;
+        if (isUSB) alertClass += ' usb-alert';
+        if (isPending) alertClass += ' pending-alert';
+
+        const alertIcon = isUSB ? '💾' :
+                         alert.alertType && alert.alertType.includes('FILE') ? '📁' :
+                         alert.alertType && alert.alertType.includes('NETWORK') ? '🌐' : '🚨';
+
+        return `
+            <div class="${alertClass}" id="alert-${alert.id}">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.2em;">${alertIcon}</span>
+                        <div>
+                            <strong>${alert.alertType || 'Security Alert'}</strong>
+                            <div style="font-size: 0.9em; color: #666; margin-top: 2px;">
+                                ${alert.agent ? `Agent: ${alert.agent.username}` : 'System'} •
+                                Severity: <span class="severity-${severityClass}">${severity}</span> •
+                                Status: <span class="status-${alert.status?.toLowerCase() || 'pending'}">${alert.status || 'PENDING'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span style="font-size: 0.9em; color: #666;">
+                        ${new Date(alert.createdAt).toLocaleString()}
+                    </span>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong>Description:</strong> ${alert.description || 'No description provided'}</p>
+                    ${alert.deviceInfo ? `<p><strong>Device Info:</strong> ${alert.deviceInfo}</p>` : ''}
+                    ${alert.fileDetails ? `<p><strong>File Details:</strong> ${alert.fileDetails}</p>` : ''}
+                    ${alert.actionTaken ? `<p><strong>Action Taken:</strong> ${alert.actionTaken}</p>` : ''}
+                </div>
+
+                ${isPending ? `
+                <div class="action-buttons">
+                    ${isUSB ? `
+                    <button class="btn btn-success btn-sm" onclick="handleUSBAlert(${alert.id}, 'ALLOW')">
+                        ✅ Allow USB
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="handleUSBAlert(${alert.id}, 'BLOCK')">
+                        ❌ Block USB
+                    </button>
+                    ` : ''}
+                    <button class="btn btn-primary btn-sm" onclick="handleAlertDecision(${alert.id}, 'RESOLVED')">
+                        ✅ Resolve
+                    </button>
+                    <button class="btn btn-warning btn-sm" onclick="handleAlertDecision(${alert.id}, 'IGNORED')">
+                        🤷 Ignore
+                    </button>
+                    <button class="btn btn-info btn-sm" onclick="viewAlertDetails(${alert.id})">
+                        🔍 Details
+                    </button>
+                </div>
+                ` : `
+                <div style="margin-top: 10px; padding: 8px; background: #e8f5e8; border-radius: 4px;">
+                    <strong>Resolved:</strong> This alert has been handled
+                </div>
+                `}
+            </div>
+        `;
+    }
+
+    async function handleUSBAlert(alertId, action) {
+        const alert = allAlerts.find(a => a.id === alertId);
+        if (!alert) return;
+
+        if (action === 'BLOCK') {
+            if (confirm(`🚫 BLOCK USB DEVICE?\n\nThis will block the USB device and prevent data transfer.\n\nDevice: ${alert.deviceInfo || 'Unknown'}`)) {
+                await handleAlertDecision(alertId, 'BLOCKED');
+                showToast(`USB device has been blocked`, 'success');
+            }
+        } else if (action === 'ALLOW') {
+            if (confirm(`✅ ALLOW USB DEVICE?\n\nThis will allow the USB device to be used normally.\n\nDevice: ${alert.deviceInfo || 'Unknown'}`)) {
+                await handleAlertDecision(alertId, 'ALLOWED');
+                showToast(`USB device has been allowed`, 'success');
+            }
+        }
+    }
+
+    function filterAlerts(filter) {
+        currentAlertFilter = filter;
+
+        // Update filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        displayFilteredAlerts();
+    }
+
+    async function handleAlertDecision(alertId, decision) {
+        try {
+            const result = await callApi(`/api/admin/alerts/${alertId}/decision?decision=${encodeURIComponent(decision)}`, { method: 'POST' });
+
+            if (result && result.success) {
+                showToast(`Alert ${decision.toLowerCase()} successfully!`, 'success');
+                await loadAlerts();
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed'), 'error');
+            }
+        } catch (error) {
+            console.error('Error handling alert:', error.message);
+            showToast('Error handling alert: ' + error.message, 'error');
+        }
+    }
+
+    function viewAlertDetails(alertId) {
+        const alert = allAlerts.find(a => a.id === alertId);
+        if (!alert) return;
+
+        const details = `
+            Alert ID: ${alert.id}
+            Type: ${alert.alertType}
+            Severity: ${alert.severity}
+            Status: ${alert.status}
+            Created: ${new Date(alert.createdAt).toLocaleString()}
+            Description: ${alert.description}
+            ${alert.deviceInfo ? `Device Info: ${alert.deviceInfo}` : ''}
+            ${alert.fileDetails ? `File Details: ${alert.fileDetails}` : ''}
+            ${alert.actionTaken ? `Action Taken: ${alert.actionTaken}` : ''}
+        `;
+
+        alert('🔍 Alert Details:\n\n' + details);
+    }
+
+    // Active Policies Table
+    async function loadActivePoliciesTable() {
+        try {
+            const result = await callApi('/api/admin/protection-policies', { method: 'GET' });
+            if (!result || !result.success) {
+                document.getElementById('activePoliciesTable').innerHTML = '<tr><td colspan="6" class="empty-state">No policy assignments found</td></tr>';
+                return;
+            }
+
+            const assignments = result.data.assignments || [];
+            if (assignments.length === 0) {
+                document.getElementById('activePoliciesTable').innerHTML = '<tr><td colspan="6" class="empty-state">No policy assignments found</td></tr>';
+                return;
+            }
+
+            document.getElementById('activePoliciesTable').innerHTML = assignments.map(assignment => `
+                <tr>
+                    <td>${assignment.user ? assignment.user.username : 'Unknown'}</td>
+                    <td>${assignment.policy ? assignment.policy.category : 'N/A'}</td>
+                    <td>${assignment.policy ? assignment.policy.name : 'N/A'}</td>
+                    <td>${assignment.policy ? assignment.policy.action : 'N/A'}</td>
+                    <td>${assignment.policy ? assignment.policy.severity : 'N/A'}</td>
+                    <td>${assignment.assignedAt ? new Date(assignment.assignedAt).toLocaleString() : 'N/A'}</td>
+                </tr>
+            `).join('');
+        } catch (error) {
+            console.error('Error loading active policies:', error.message);
+            document.getElementById('activePoliciesTable').innerHTML = `<tr><td colspan="6" class="error-state">Error: ${error.message}</td></tr>`;
+        }
+    }
+
+    async function createTestUSBAlert() {
+        try {
+            const result = await callApi('/api/admin/alerts/create-test?agentId=1&alertType=USB_INSERTION&description=Test+USB+detected&deviceInfo=F:&fileDetails=Test+file+copied', { method: 'POST' });
+            if (result && result.success) {
+                showToast('Test alert created!', 'success');
+                await loadAlerts();
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed to create test alert'), 'error');
+            }
+        } catch (error) {
+            showToast('Error creating test alert: ' + error.message, 'error');
+        }
+    }
+
+    async function createTestAgent() {
+        try {
+            const result = await callApi('/api/admin/agents/create-test', { method: 'POST' });
+            if (result && result.success) {
+                showToast('Test agent created!', 'success');
+                await loadAgents();
+            } else {
+                showToast('Error: ' + (result?.message || 'Failed to create test agent'), 'error');
+            }
+        } catch (error) {
+            showToast('Error creating test agent: ' + error.message, 'error');
+        }
+    }
+
+    // Auto-refresh
+    function startAutoRefresh() {
+        refreshInterval = setInterval(() => {
+            loadOverviewStats();
+            const activeTab = document.querySelector('.tab-content.active').id;
+            if (activeTab === 'alerts') {
+                loadAlerts();
+            }
+        }, 30000);
+    }
+
+    function stopAutoRefresh() {
+        if (refreshInterval) {
+            clearInterval(refreshInterval);
+        }
+    }
+
+    // Debug functions
+    function debugAlerts() {
+        console.log("All alerts:", allAlerts);
+        showToast('Check console for alert debug information', 'info');
+    }
+
+    async function debugPolicies() {
+        try {
+            console.log("🔍 Debug: Checking policies...");
+            const result = await callApi('/api/admin/protection-policies', {method: 'GET'});
+            console.log("All protection policies:", result);
+            if (result && result.success) {
+                Object.keys(result.data || {}).forEach(category => {
+                    console.log(`Category ${category}:`, result.data[category]);
+                });
+            } else {
+                console.warn('Debug policies: no data', result);
+            }
+            showToast('Check console for policy debug information', 'info');
+        } catch (error) {
+            console.error("Debug error:", error.message);
+            showToast('Debug error: ' + error.message, 'error');
+        }
+    }
+
+    // Event Listeners
+    document.getElementById('password').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            adminLogin();
+        }
+    });
+
+    // Additional styles for alert states
+    const additionalStyles = `
+        .usb-alert {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .pending-alert {
+            background: #fff3cd !important;
+            border: 1px solid #ffeaa7;
+        }
+
+        .severity-high, .severity-critical {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .severity-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .severity-low {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .status-resolved {
+            color: #27ae60;
+            font-weight: bold;
+        }
+    `;
+
+    // Inject additional styles
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = additionalStyles;
+    document.head.appendChild(styleSheet);
+
+    // Make debug functions available globally
+    window.debugPolicies = debugPolicies;
+    window.debugAlerts = debugAlerts;
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+        checkAuthStatus();
+    });
+</script>
+</body>
+</html>
